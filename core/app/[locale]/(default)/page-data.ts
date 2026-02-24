@@ -89,3 +89,61 @@ export const getPageData = cache(
     return data;
   },
 );
+
+
+// custom data
+const fetchLinks = graphql(
+  `
+  query fetchLinks {
+    site {
+      content {
+        pages {
+          edges {
+            node {
+              name
+              ... on NormalPage {
+                id
+                name
+                path
+              }
+              ... on ContactPage {
+                id
+                name
+                path
+              }
+              ... on ExternalLinkPage {
+                parentEntityId
+                link
+                name
+              }
+              ... on RawHtmlPage {
+                id
+                name
+                path
+              }
+              ... on BlogIndexPage {
+                id
+                name
+                path
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  `
+)
+
+export const fetchPageLinks = cache(
+  async (currencyCode?: CurrencyCode, customerAccessToken?: string) => {
+    const { data } = await client.fetch({
+      document: fetchLinks,
+      customerAccessToken,
+      variables: { currencyCode },
+      fetchOptions: customerAccessToken ? { cache: 'no-store' } : { next: { revalidate } },
+    });
+
+    return data.site.content.pages.edges
+  },
+);

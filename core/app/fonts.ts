@@ -1,8 +1,9 @@
-import { DM_Serif_Text, Inter, Roboto_Mono } from 'next/font/google';
+import { DM_Serif_Text, Inter, Roboto_Mono, Rubik } from 'next/font/google';
 
-const inter = Inter({
+const rubik = Rubik({
   display: 'swap',
   subsets: ['latin'],
+  weight: '400', 
   variable: '--font-family-body',
 });
 
@@ -19,4 +20,4 @@ const robotoMono = Roboto_Mono({
   variable: '--font-family-mono',
 });
 
-export const fonts = [inter, dmSerifText, robotoMono];
+export const fonts = [rubik, dmSerifText, robotoMono];

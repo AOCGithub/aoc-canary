@@ -18,6 +18,9 @@ import { search } from './_actions/search';
 import { switchCurrency } from './_actions/switch-currency';
 import { CurrencyCode, HeaderFragment, HeaderLinksFragment } from './fragment';
 
+// custom
+import { fetchPageLinks } from '~/app/[locale]/(default)/page-data';
+
 const GetCartCountQuery = graphql(`
   query GetCartCountQuery($cartId: String) {
     site {
@@ -153,8 +156,17 @@ export const Header = async () => {
     return currencyCode ?? defaultCurrency?.id;
   });
 
+  const rawPageLinks = await fetchPageLinks();
+
+  const pageLinks = rawPageLinks?.map(({ node }) => ({
+    name: node.name,
+    path: 'path' in node ? node.path : undefined,
+    link: 'link' in node ? node.link : undefined,
+  })) ?? [];
+
   return (
     <HeaderSection
+      pageLinks={pageLinks}
       navigation={{
         accountHref: '/login',
         accountLabel: t('Icons.account'),
