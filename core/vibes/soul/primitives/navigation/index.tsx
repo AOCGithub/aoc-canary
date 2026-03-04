@@ -327,13 +327,13 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
   return (
     <NavigationMenu.Root
       className={clsx('relative mx-auto w-full max-w-screen-2xl @container', className)}
-      delayDuration={0}
-      onValueChange={() => setIsSearchOpen(false)}
-      ref={ref}
+      // delayDuration={0}
+      // onValueChange={() => setIsSearchOpen(false)}
+      // ref={ref}
     >
       <div
         className={clsx(
-          'flex items-center justify-between gap-1 w-[90%] mx-auto bg-[var(--nav-background,hsl(var(--background)))] py-2 pl-3 pr-2 transition-shadow @4xl:rounded-2xl @4xl:px-2 @4xl:pl-6 @4xl:pr-2.5',
+          'flex items-center justify-between gap-1 w-[100%] mx-auto bg-[var(--nav-background,hsl(var(--background)))] py-2 pl-3 pr-2 transition-shadow @4xl:rounded-2xl @4xl:px-2 @4xl:pl-6 @4xl:pr-2.5',
           isFloating
             ? 'shadow-xl ring-1 ring-[var(--nav-floating-border,hsl(var(--foreground)/10%))]'
             : 'shadow-none ring-0',
@@ -441,8 +441,8 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
         {/* Logo */}
         <div
           className={clsx(
-            'flex items-center justify-start self-stretch',
-            linksPosition === 'center' ? 'flex-1' : 'flex-1 @4xl:flex-none',
+            'flex items-center justify-start self-stretch min-w-[20%]',
+            // linksPosition === 'center' ? 'flex-1' : 'flex-1 @4xl:flex-none',
           )}
         >
           <Logo
@@ -466,7 +466,7 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
         </div>
 
         {/* custom icon container */}
-        <div>
+        <div className='min-w-[25%]'>
           <div>
             <img className='w-8 h-8' src='https://cdn11.bigcommerce.com/s-t0676dlrio/images/stencil/original/image-manager/cs-icon.png?t=1771987367'/>
             <div>
@@ -477,7 +477,7 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
         </div>
 
         {/* custom search input */}
-        <div className="@4xl:flex items-center gap-2 rounded-[150px] bg-[#E5E7EE] w-[42%] border-[1px] border-[#224086] overflow-hidden">
+        <div className="@4xl:flex items-center gap-2 rounded-[150px] bg-[#E5E7EE] w-[42%] border-[1px] border-[#224086] overflow-hidden min-w-[44%]">
           <form
             action={searchHref}
             className="flex flex-1 items-center gap-2 pl-[24px] h-[48px]"
@@ -498,8 +498,8 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
         {/* Icon Buttons */}
         <div
           className={clsx(
-            'flex items-center justify-end gap-0.5 transition-colors duration-300',
-            linksPosition === 'center' ? 'flex-1' : 'flex-1 @4xl:flex-none',
+            'flex items-center justify-end gap-0.5 transition-colors duration-300 min-w-[6%]',
+            // linksPosition === 'center' ? 'flex-1' : 'flex-1 @4xl:flex-none',
           )}
         >
 
@@ -537,11 +537,15 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
             </Link>
           )} */}
 
-          <Link aria-label={accountLabel} className={navButtonClassName} href={accountHref}>
+          {/* just hide this for now */}
+          {/* <Link aria-label={accountLabel} className={navButtonClassName} href={accountHref}>
             <User size={20} strokeWidth={1} />
-          </Link>
+          </Link> */}
+          
           <Link aria-label={cartLabel} className={navButtonClassName} href={cartHref}>
-            <ShoppingBag size={20} strokeWidth={1} />
+            {/* shoppingbag icon */}
+            {/* <ShoppingBag size={20} strokeWidth={1} /> */}
+            <img className='w-[30px] h-[30px] object-contain' src='https://cdn11.bigcommerce.com/s-t0676dlrio/images/stencil/original/image-manager/shopping-cart-24dp-e8eaed-fill1-wght300-grad0-opsz24-1-2x.png?t=1772609331'/>
             <Stream
               fallback={
                 <span className="absolute -right-0.5 -top-0.5 flex h-4 w-4 animate-pulse items-center justify-center rounded-full bg-contrast-100 text-xs text-background" />
@@ -559,7 +563,7 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
             </Stream>
           </Link>
 
-          <Stream fallback={null} value={streamableGiftCertificatesEnabled}>
+          {/* <Stream fallback={null} value={streamableGiftCertificatesEnabled}>
             {(giftCertificatesEnabled) =>
               giftCertificatesEnabled && (
                 <Link
@@ -571,20 +575,20 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
                 </Link>
               )
             }
-          </Stream>
+          </Stream> */}
 
           {/* Locale / Language Dropdown */}
-          {locales && locales.length > 1 ? (
+          {/* {locales && locales.length > 1 ? (
             <LocaleSwitcher
               activeLocaleId={activeLocaleId}
               className="hidden @4xl:block"
               // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
               locales={locales as [Locale, Locale, ...Locale[]]}
             />
-          ) : null}
+          ) : null} */}
 
           {/* Currency Dropdown */}
-          <Stream
+          {/* <Stream
             fallback={null}
             value={Streamable.all([streamableCurrencies, streamableActiveCurrencyId])}
           >
@@ -600,7 +604,7 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
                 />
               ) : null
             }
-          </Stream>
+          </Stream> */}
         </div>
       </div>
 

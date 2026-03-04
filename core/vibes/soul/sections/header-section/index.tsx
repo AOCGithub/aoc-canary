@@ -1,7 +1,7 @@
 'use client';
 
 import { forwardRef, useEffect, useState } from 'react';
-import Headroom from 'react-headroom';
+// import Headroom from 'react-headroom';
 
 import { Banner } from '@/vibes/soul/primitives/banner';
 import { Navigation } from '@/vibes/soul/primitives/navigation';
@@ -58,10 +58,10 @@ export const HeaderSection = forwardRef<React.ComponentRef<'div'>, Props>(
     return (
       <div ref={ref}>
         {banner && <Banner ref={setBannerElement} {...banner} />}
-        <Headroom
-          onUnfix={() => setIsFloating(false)}
-          onUnpin={() => setIsFloating(true)}
-          pinStart={bannerHeight}
+        <div
+          // onUnfix={() => setIsFloating(false)}
+          // onUnpin={() => setIsFloating(true)}
+          // pinStart={bannerHeight}
         >
           <div className="">
             <div className='bg-[#E5E7EE] h-auto w-full mx-auto'> 
@@ -109,7 +109,7 @@ export const HeaderSection = forwardRef<React.ComponentRef<'div'>, Props>(
             </div>
             <Navigation {...navigation} isFloating={isFloating} />
           </div>
-        </Headroom>
+        </div>
       </div>
     );
   },
