@@ -333,7 +333,7 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
     >
       <div
         className={clsx(
-          'flex items-center justify-between gap-1 bg-[var(--nav-background,hsl(var(--background)))] py-2 pl-3 pr-2 transition-shadow @4xl:rounded-2xl @4xl:px-2 @4xl:pl-6 @4xl:pr-2.5',
+          'flex items-center justify-between gap-1 w-[90%] mx-auto bg-[var(--nav-background,hsl(var(--background)))] py-2 pl-3 pr-2 transition-shadow @4xl:rounded-2xl @4xl:px-2 @4xl:pl-6 @4xl:pr-2.5',
           isFloating
             ? 'shadow-xl ring-1 ring-[var(--nav-floating-border,hsl(var(--foreground)/10%))]'
             : 'shadow-none ring-0',
@@ -465,86 +465,35 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
           )}
         </div>
 
-        {/* Top Level Nav Links */}
-        <ul
-          className={clsx(
-            'hidden gap-1 @4xl:flex @4xl:flex-1',
-            {
-              left: '@4xl:justify-start',
-              center: '@4xl:justify-center',
-              right: '@4xl:justify-end',
-            }[linksPosition],
-          )}
-        >
-          <Stream
-            fallback={
-              <ul className="flex min-h-[41px] animate-pulse flex-row items-center @4xl:gap-6 @4xl:p-2.5">
-                <li>
-                  <span className="block h-4 w-10 rounded-md bg-contrast-100" />
-                </li>
-                <li>
-                  <span className="block h-4 w-14 rounded-md bg-contrast-100" />
-                </li>
-                <li>
-                  <span className="block h-4 w-24 rounded-md bg-contrast-100" />
-                </li>
-                <li>
-                  <span className="block h-4 w-16 rounded-md bg-contrast-100" />
-                </li>
-              </ul>
-            }
-            value={streamableLinks}
-          >
-            {(links) =>
-              links.map((item, i) => (
-                <NavigationMenu.Item key={i} value={i.toString()}>
-                  <NavigationMenu.Trigger asChild>
-                    <Link
-                      className="hidden items-center whitespace-nowrap rounded-xl bg-[var(--nav-link-background,transparent)] p-2.5 font-[family-name:var(--nav-link-font-family,var(--font-family-body))] text-sm font-medium text-[var(--nav-link-text,hsl(var(--foreground)))] ring-[var(--nav-focus,hsl(var(--primary)))] transition-colors duration-200 hover:bg-[var(--nav-link-background-hover,hsl(var(--contrast-100)))] hover:text-[var(--nav-link-text-hover,hsl(var(--foreground)))] focus-visible:outline-0 focus-visible:ring-2 @4xl:inline-flex"
-                      href={item.href}
-                    >
-                      {item.label}
-                    </Link>
-                  </NavigationMenu.Trigger>
-                  {item.groups != null && item.groups.length > 0 && (
-                    <NavigationMenu.Content className="rounded-2xl bg-[var(--nav-menu-background,hsl(var(--background)))] shadow-xl ring-1 ring-[var(--nav-menu-border,hsl(var(--foreground)/5%))]">
-                      <div className="m-auto grid w-full max-w-screen-lg grid-cols-5 justify-center gap-5 px-5 pb-8 pt-5">
-                        {item.groups.map((group, columnIndex) => (
-                          <ul className="flex flex-col" key={columnIndex}>
-                            {/* Second Level Links */}
-                            {group.label != null && group.label !== '' && (
-                              <li>
-                                {group.href != null && group.href !== '' ? (
-                                  <Link className={navGroupClassName} href={group.href}>
-                                    {group.label}
-                                  </Link>
-                                ) : (
-                                  <span className={navGroupClassName}>{group.label}</span>
-                                )}
-                              </li>
-                            )}
+        {/* custom icon container */}
+        <div>
+          <div>
+            <img className='w-8 h-8' src='https://cdn11.bigcommerce.com/s-t0676dlrio/images/stencil/original/image-manager/cs-icon.png?t=1771987367'/>
+            <div>
+              <p>Call(888) 260-7444</p>
+              <p>8am - 5pm PST (Mon - fri)</p>
+            </div>
+          </div>
+        </div>
 
-                            {group.links.map((link, idx) => (
-                              // Third Level Links
-                              <li key={idx}>
-                                <Link
-                                  className="block rounded-lg bg-[var(--nav-sub-link-background,transparent)] px-3 py-1.5 font-[family-name:var(--nav-sub-link-font-family,var(--font-family-body))] text-sm font-medium text-[var(--nav-sub-link-text,hsl(var(--contrast-500)))] ring-[var(--nav-focus,hsl(var(--primary)))] transition-colors hover:bg-[var(--nav-sub-link-background-hover,hsl(var(--contrast-100)))] hover:text-[var(--nav-sub-link-text-hover,hsl(var(--foreground)))] focus-visible:outline-0 focus-visible:ring-2"
-                                  href={link.href}
-                                >
-                                  {link.label}
-                                </Link>
-                              </li>
-                            ))}
-                          </ul>
-                        ))}
-                      </div>
-                    </NavigationMenu.Content>
-                  )}
-                </NavigationMenu.Item>
-              ))
-            }
-          </Stream>
-        </ul>
+        {/* custom search input */}
+        <div className="@4xl:flex items-center gap-2 rounded-[150px] bg-[#E5E7EE] w-[42%] border-[1px] border-[#224086] overflow-hidden">
+          <form
+            action={searchHref}
+            className="flex flex-1 items-center gap-2 pl-[24px] h-[48px]"
+            onSubmit={() => {}}
+          >
+            <input
+              className="grow bg-transparent text-sm font-[400] outline-0 focus-visible:outline-none placeholder:text-[#666666]"
+              name={searchParamName}
+              placeholder='Enter keywords to search'
+              type="text"
+            />
+            <button type="submit" className="shrink-0 text-[var(--nav-search-icon,hsl(var(--contrast-500)))] transition-colors h-[48px] bg-[#224086] px-[32px] text-white text-[15px] font-[family-name:var(--nav-link-font-family,var(--font-family-body))]">
+              Search
+            </button>
+          </form>
+        </div>
 
         {/* Icon Buttons */}
         <div
@@ -553,7 +502,8 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
             linksPosition === 'center' ? 'flex-1' : 'flex-1 @4xl:flex-none',
           )}
         >
-          {searchAction ? (
+
+          {/* {searchAction ? (
             <Popover.Root onOpenChange={setIsSearchOpen} open={isSearchOpen}>
               <Popover.Anchor className="absolute left-0 right-0 top-full" />
               <Popover.Trigger asChild>
@@ -585,7 +535,7 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
             <Link aria-label={searchLabel} className={navButtonClassName} href={searchHref}>
               <Search size={20} strokeWidth={1} />
             </Link>
-          )}
+          )} */}
 
           <Link aria-label={accountLabel} className={navButtonClassName} href={accountHref}>
             <User size={20} strokeWidth={1} />
@@ -652,6 +602,89 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
             }
           </Stream>
         </div>
+      </div>
+
+      <div> 
+        {/* Top Level Nav Links */}
+        <ul
+          className={clsx(
+            'hidden gap-16 @4xl:flex @4xl:flex-1',
+            {
+              left: '@4xl:justify-start',
+              center: '@4xl:justify-center',
+              right: '@4xl:justify-end',
+            }[linksPosition],
+          )}
+        >
+          <Stream
+            fallback={
+              <ul className="flex min-h-[41px] animate-pulse flex-row items-center @4xl:gap-6 @4xl:p-2.5">
+                <li>
+                  <span className="block h-4 w-10 rounded-md bg-contrast-100" />
+                </li>
+                <li>
+                  <span className="block h-4 w-14 rounded-md bg-contrast-100" />
+                </li>
+                <li>
+                  <span className="block h-4 w-24 rounded-md bg-contrast-100" />
+                </li>
+                <li>
+                  <span className="block h-4 w-16 rounded-md bg-contrast-100" />
+                </li>
+              </ul>
+            }
+            value={streamableLinks}
+          >
+            {(links) =>
+              links.map((item, i) => (
+                <NavigationMenu.Item key={i} value={i.toString()}>
+                  <NavigationMenu.Trigger asChild>
+                    <Link
+                      className="hidden uppercase items-center whitespace-nowrap rounded-xl bg-[var(--nav-link-background,transparent)] p-2.5 font-[family-name:var(--nav-link-font-family,var(--font-family-body))] text-sm font-medium text-[var(--nav-link-text,hsl(var(--foreground)))] ring-[var(--nav-focus,hsl(var(--primary)))] transition-colors duration-200 hover:bg-[var(--nav-link-background-hover,hsl(var(--contrast-100)))] hover:text-[var(--nav-link-text-hover,hsl(var(--foreground)))] focus-visible:outline-0 focus-visible:ring-2 @4xl:inline-flex"
+                      href={item.href}
+                    >
+                      {item.label}
+                    </Link>
+                  </NavigationMenu.Trigger>
+                  {item.groups != null && item.groups.length > 0 && (
+                    <NavigationMenu.Content className="rounded-2xl bg-[var(--nav-menu-background,hsl(var(--background)))] shadow-xl ring-1 ring-[var(--nav-menu-border,hsl(var(--foreground)/5%))]">
+                      <div className="m-auto grid w-full max-w-screen-lg grid-cols-5 justify-center gap-5 px-5 pb-8 pt-5">
+                        {item.groups.map((group, columnIndex) => (
+                          <ul className="flex flex-col" key={columnIndex}>
+                            {/* Second Level Links */}
+                            {group.label != null && group.label !== '' && (
+                              <li>
+                                {group.href != null && group.href !== '' ? (
+                                  <Link className={navGroupClassName} href={group.href}>
+                                    {group.label}
+                                  </Link>
+                                ) : (
+                                  <span className={navGroupClassName}>{group.label}</span>
+                                )}
+                              </li>
+                            )}
+
+                            {group.links.map((link, idx) => (
+                              // Third Level Links
+                              <li key={idx}>
+                                <Link
+                                  className="block rounded-lg bg-[var(--nav-sub-link-background,transparent)] px-3 py-1.5 font-[family-name:var(--nav-sub-link-font-family,var(--font-family-body))] text-sm font-medium text-[var(--nav-sub-link-text,hsl(var(--contrast-500)))] ring-[var(--nav-focus,hsl(var(--primary)))] transition-colors hover:bg-[var(--nav-sub-link-background-hover,hsl(var(--contrast-100)))] hover:text-[var(--nav-sub-link-text-hover,hsl(var(--foreground)))] focus-visible:outline-0 focus-visible:ring-2"
+                                  href={link.href}
+                                >
+                                  {link.label}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        ))}
+                      </div>
+                    </NavigationMenu.Content>
+                  )}
+                </NavigationMenu.Item>
+              ))
+            }
+          </Stream>
+        </ul>
       </div>
 
       <div className="perspective-[2000px] absolute left-0 right-0 top-full z-50 flex w-full justify-center">
