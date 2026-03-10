@@ -153,7 +153,7 @@ export function Slideshow({ slides, playOnInit = true, interval = 5000, classNam
   return (
     <section
       className={clsx(
-        'relative h-[80vh] bg-[var(--slideshow-background,color-mix(in_oklab,hsl(var(--primary)),black_75%))] @container',
+        'relative h-[384px] my-[20px] bg-[var(--slideshow-background,color-mix(in_oklab,hsl(var(--primary)),black_75%))] @container max-w-screen-2xl mx-auto', //h-[80vh]
         className,
       )}
     >
@@ -162,49 +162,51 @@ export function Slideshow({ slides, playOnInit = true, interval = 5000, classNam
           {slides.map(
             ({ title, description, showDescription = true, image, cta, showCta = true }, idx) => {
               return (
-                <div
-                  className="relative h-full w-full min-w-0 shrink-0 grow-0 basis-full"
-                  key={idx}
-                >
-                  <div className="absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-[var(--slideshow-mask,hsl(var(--foreground)/80%))] to-transparent">
-                    <div className="mx-auto w-full max-w-screen-2xl text-balance px-4 pb-16 pt-12 @xl:px-6 @xl:pb-20 @xl:pt-16 @4xl:px-8 @4xl:pt-20">
-                      <h1 className="m-0 max-w-xl font-[family-name:var(--slideshow-title-font-family,var(--font-family-heading))] text-4xl font-medium leading-none text-[var(--slideshow-title,hsl(var(--background)))] @2xl:text-5xl @2xl:leading-[.9] @4xl:text-6xl">
-                        {title}
-                      </h1>
-                      {showDescription && (
-                        <p className="mt-2 max-w-xl font-[family-name:var(--slideshow-description-font-family,var(--font-family-body))] text-base leading-normal text-[var(--slideshow-description,hsl(var(--background)/80%))] @xl:mt-3 @xl:text-lg">
-                          {description}
-                        </p>
-                      )}
-                      {showCta && (
-                        <ButtonLink
-                          className="mt-6 @xl:mt-8"
-                          href={cta?.href ?? '#'}
-                          shape={cta?.shape ?? 'pill'}
-                          size={cta?.size ?? 'large'}
-                          variant={cta?.variant ?? 'tertiary'}
-                        >
-                          {cta?.label ?? 'Learn more'}
-                        </ButtonLink>
-                      )}
+                  <div
+                    className="relative h-full w-full min-w-0 shrink-0 grow-0 basis-full"
+                    key={idx}
+                  >
+                    <div className="absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-[var(--slideshow-mask,hsl(var(--foreground)/80%))] to-transparent !hidden">
+                      <div className="mx-auto w-full max-w-screen-2xl text-balance px-4 pb-16 pt-12 @xl:px-6 @xl:pb-20 @xl:pt-16 @4xl:px-8 @4xl:pt-20">
+                        <h1 className="m-0 max-w-xl font-[family-name:var(--slideshow-title-font-family,var(--font-family-heading))] text-4xl font-medium leading-none text-[var(--slideshow-title,hsl(var(--background)))] @2xl:text-5xl @2xl:leading-[.9] @4xl:text-6xl">
+                          {title}
+                        </h1>
+                        {showDescription && (
+                          <p className="mt-2 max-w-xl font-[family-name:var(--slideshow-description-font-family,var(--font-family-body))] text-base leading-normal text-[var(--slideshow-description,hsl(var(--background)/80%))] @xl:mt-3 @xl:text-lg">
+                            {description}
+                          </p>
+                        )}
+                        {showCta && (
+                          <ButtonLink
+                            className="mt-6 @xl:mt-8"
+                            href={cta?.href ?? '#'}
+                            shape={cta?.shape ?? 'pill'}
+                            size={cta?.size ?? 'large'}
+                            variant={cta?.variant ?? 'tertiary'}
+                          >
+                            {cta?.label ?? 'Learn more'}
+                          </ButtonLink>
+                        )}
+                      </div>
                     </div>
-                  </div>
 
-                  {image?.src != null && image.src !== '' && (
-                    <Image
-                      alt={image.alt}
-                      blurDataURL={image.blurDataUrl}
-                      className="block h-20 w-full object-cover"
-                      fill
-                      placeholder={
-                        image.blurDataUrl != null && image.blurDataUrl !== '' ? 'blur' : 'empty'
-                      }
-                      priority={idx === 0}
-                      sizes="100vw"
-                      src={image.src}
-                    />
-                  )}
-                </div>
+                    {image?.src != null && image.src !== '' && (
+                        <a href={cta?.href ?? '#'}>
+                          <Image
+                            alt={image.alt}
+                            blurDataURL={image.blurDataUrl}
+                            className="block h-20 w-full object-contain"
+                            fill
+                            placeholder={
+                              image.blurDataUrl != null && image.blurDataUrl !== '' ? 'blur' : 'empty'
+                            }
+                            priority={idx === 0}
+                            sizes="100vw"
+                            src={image.src}
+                          />
+                        </a>
+                    )}
+                  </div>
               );
             },
           )}

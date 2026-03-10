@@ -38,6 +38,10 @@ import { Link } from '~/components/link';
 import { usePathname, useRouter } from '~/i18n/routing';
 import { useSearch } from '~/lib/search';
 
+// custom
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons'
+
 interface Link {
   label: string;
   href: string;
@@ -306,6 +310,9 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { isSearchOpen, setIsSearchOpen } = useSearch();
 
+  // inside your component:
+  const [isHovered, setIsHovered] = useState(false)
+
   const pathname = usePathname();
 
   useEffect(() => {
@@ -326,14 +333,14 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
 
   return (
     <NavigationMenu.Root
-      className={clsx('relative mx-auto w-full max-w-screen-2xl @container', className)}
+      className={clsx('relative mx-auto w-full @container', className)} //max-w-screen-2xl
       // delayDuration={0}
       // onValueChange={() => setIsSearchOpen(false)}
       // ref={ref}
     >
       <div
         className={clsx(
-          'flex items-center justify-between gap-1 w-[100%] mx-auto bg-[var(--nav-background,hsl(var(--background)))] py-2 pl-3 pr-2 transition-shadow @4xl:rounded-2xl @4xl:px-2 @4xl:pl-6 @4xl:pr-2.5',
+          'flex items-center justify-between gap-1 w-[90%] max-w-screen-2xl mx-auto bg-[var(--nav-background,hsl(var(--background)))] py-4 pl-3 pr-2 transition-shadow @4xl:rounded-2xl @4xl:px-2 @4xl:pl-6 @4xl:pr-2.5',
           isFloating
             ? 'shadow-xl ring-1 ring-[var(--nav-floating-border,hsl(var(--foreground)/10%))]'
             : 'shadow-none ring-0',
@@ -445,33 +452,35 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
             // linksPosition === 'center' ? 'flex-1' : 'flex-1 @4xl:flex-none',
           )}
         >
-          <Logo
+          {/* <Logo
             className={clsx(streamableMobileLogo != null ? 'hidden @4xl:flex' : 'flex')}
             height={logoHeight}
             href={logoHref}
             label={logoLabel}
             logo={streamableLogo}
             width={logoWidth}
-          />
+          /> */}
+          <img src='https://usrigging.com/cdn/shop/files/USRigging-Logo-01.svg?v=1740965176&width=250'/>
           {streamableMobileLogo != null && (
-            <Logo
-              className="flex @4xl:hidden"
-              height={mobileLogoHeight}
-              href={logoHref}
-              label={logoLabel}
-              logo={streamableMobileLogo}
-              width={mobileLogoWidth}
-            />
+            // <Logo
+            //   className="flex @4xl:hidden"
+            //   height={mobileLogoHeight}
+            //   href={logoHref}
+            //   label={logoLabel}
+            //   logo={streamableMobileLogo}
+            //   width={mobileLogoWidth}
+            // />
+            <img src='https://usrigging.com/cdn/shop/files/USRigging-Logo-01.svg?v=1740965176&width=250'/>
           )}
         </div>
 
         {/* custom icon container */}
         <div className='min-w-[25%]'>
-          <div>
-            <img className='w-8 h-8' src='https://cdn11.bigcommerce.com/s-t0676dlrio/images/stencil/original/image-manager/cs-icon.png?t=1771987367'/>
+          <div className='flex items-center justify-center gap-[12px]'>
+            <img className='w-[36px] h-[35px] object-contain' src='https://cdn11.bigcommerce.com/s-t0676dlrio/images/stencil/original/image-manager/cs-icon.png?t=1771987367'/>
             <div>
-              <p>Call(888) 260-7444</p>
-              <p>8am - 5pm PST (Mon - fri)</p>
+              <p className='text-[#0D1E47] text-[16px] font-[700]'>Call(888) 260-7444</p>
+              <p className='text-[#666666] text-[12px] leading-[125%]'>8am - 5pm PST (Mon - fri)</p>
             </div>
           </div>
         </div>
@@ -608,11 +617,11 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
         </div>
       </div>
 
-      <div> 
+      <div className='bg-[#224086]'> 
         {/* Top Level Nav Links */}
         <ul
           className={clsx(
-            'hidden gap-16 @4xl:flex @4xl:flex-1',
+            'hidden gap-16 @4xl:flex @4xl:flex-1 h-[50px] max-w-screen-2xl mx-auto',
             {
               left: '@4xl:justify-start',
               center: '@4xl:justify-center',
@@ -640,59 +649,65 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
             value={streamableLinks}
           >
             {(links) =>
-              links.map((item, i) => (
-                <NavigationMenu.Item key={i} value={i.toString()}>
-                  <NavigationMenu.Trigger asChild>
-                    <Link
-                      className="hidden uppercase items-center whitespace-nowrap rounded-xl bg-[var(--nav-link-background,transparent)] p-2.5 font-[family-name:var(--nav-link-font-family,var(--font-family-body))] text-sm font-medium text-[var(--nav-link-text,hsl(var(--foreground)))] ring-[var(--nav-focus,hsl(var(--primary)))] transition-colors duration-200 hover:bg-[var(--nav-link-background-hover,hsl(var(--contrast-100)))] hover:text-[var(--nav-link-text-hover,hsl(var(--foreground)))] focus-visible:outline-0 focus-visible:ring-2 @4xl:inline-flex"
-                      href={item.href}
-                    >
-                      {item.label}
-                    </Link>
-                  </NavigationMenu.Trigger>
-                  {item.groups != null && item.groups.length > 0 && (
-                    <NavigationMenu.Content className="rounded-2xl bg-[var(--nav-menu-background,hsl(var(--background)))] shadow-xl ring-1 ring-[var(--nav-menu-border,hsl(var(--foreground)/5%))]">
-                      <div className="m-auto grid w-full max-w-screen-lg grid-cols-5 justify-center gap-5 px-5 pb-8 pt-5">
-                        {item.groups.map((group, columnIndex) => (
-                          <ul className="flex flex-col" key={columnIndex}>
-                            {/* Second Level Links */}
-                            {group.label != null && group.label !== '' && (
-                              <li>
-                                {group.href != null && group.href !== '' ? (
-                                  <Link className={navGroupClassName} href={group.href}>
-                                    {group.label}
-                                  </Link>
-                                ) : (
-                                  <span className={navGroupClassName}>{group.label}</span>
-                                )}
-                              </li>
-                            )}
+              links.map((item, i) => {
+                const [isHovered, setIsHovered] = useState(false)
 
-                            {group.links.map((link, idx) => (
-                              // Third Level Links
-                              <li key={idx}>
-                                <Link
-                                  className="block rounded-lg bg-[var(--nav-sub-link-background,transparent)] px-3 py-1.5 font-[family-name:var(--nav-sub-link-font-family,var(--font-family-body))] text-sm font-medium text-[var(--nav-sub-link-text,hsl(var(--contrast-500)))] ring-[var(--nav-focus,hsl(var(--primary)))] transition-colors hover:bg-[var(--nav-sub-link-background-hover,hsl(var(--contrast-100)))] hover:text-[var(--nav-sub-link-text-hover,hsl(var(--foreground)))] focus-visible:outline-0 focus-visible:ring-2"
-                                  href={link.href}
-                                >
-                                  {link.label}
-                                </Link>
-                              </li>
-                            ))}
-                          </ul>
-                        ))}
-                      </div>
-                    </NavigationMenu.Content>
-                  )}
-                </NavigationMenu.Item>
-              ))
+                return (
+                  <NavigationMenu.Item key={i} value={i.toString()} className='flex items-center justify-center'>
+                    <NavigationMenu.Trigger asChild>
+                      <Link
+                        className="!text-[#ffffff] !font-[700] hidden uppercase items-center whitespace-nowrap rounded-xl bg-[var(--nav-link-background,transparent)] p-2.5 font-[family-name:var(--nav-link-font-family,var(--font-family-body))] text-sm text-[var(--nav-link-text,hsl(var(--foreground)))] ring-[var(--nav-focus,hsl(var(--primary)))] transition-colors duration-200 hover:text-[var(--nav-link-text-hover,hsl(var(--foreground)))] focus-visible:outline-0 focus-visible:ring-2 @4xl:inline-flex"
+                        href={item.href}
+                        onMouseEnter={() => setIsHovered(true)}
+                        onMouseLeave={() => setIsHovered(false)}
+                      >
+                        {item.label}
+                        {item.groups != null && item.groups.length > 0 && (
+                          <FontAwesomeIcon className='text-[#e7131a]' icon={isHovered ? faCaretUp : faCaretDown} />
+                        )}
+                      </Link>
+                    </NavigationMenu.Trigger>
+                    {item.groups != null && item.groups.length > 0 && (
+                      <NavigationMenu.Content className="rounded-2xl bg-[var(--nav-menu-background,hsl(var(--background)))] shadow-xl ring-1 ring-[var(--nav-menu-border,hsl(var(--foreground)/5%))]">
+                        <div className="m-auto grid w-full max-w-screen-lg grid-cols-5 justify-center gap-5 px-5 pb-8 pt-5">
+                          {item.groups.map((group, columnIndex) => (
+                            <ul className="flex flex-col" key={columnIndex}>
+                              {group.label != null && group.label !== '' && (
+                                <li>
+                                  {group.href != null && group.href !== '' ? (
+                                    <Link className={navGroupClassName} href={group.href}>
+                                      {group.label}
+                                    </Link>
+                                  ) : (
+                                    <span className={navGroupClassName}>{group.label}</span>
+                                  )}
+                                </li>
+                              )}
+                              {group.links.map((link, idx) => (
+                                <li key={idx}>
+                                  <Link
+                                    className="block rounded-lg bg-[var(--nav-sub-link-background,transparent)] px-3 py-1.5 font-[family-name:var(--nav-sub-link-font-family,var(--font-family-body))] text-sm font-medium text-[var(--nav-sub-link-text,hsl(var(--contrast-500)))] ring-[var(--nav-focus,hsl(var(--primary)))] transition-colors hover:bg-[var(--nav-sub-link-background-hover,hsl(var(--contrast-100)))] hover:text-[var(--nav-sub-link-text-hover,hsl(var(--foreground)))] focus-visible:outline-0 focus-visible:ring-2"
+                                    href={link.href}
+                                  >
+                                    {link.label}
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
+                          ))}
+                        </div>
+                      </NavigationMenu.Content>
+                    )}
+                  </NavigationMenu.Item>
+                )
+              })
             }
           </Stream>
         </ul>
       </div>
 
       <div className="perspective-[2000px] absolute left-0 right-0 top-full z-50 flex w-full justify-center">
-        <NavigationMenu.Viewport className="relative mt-2 w-full data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95" />
+        <NavigationMenu.Viewport className="relative w-full data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95" />
       </div>
     </NavigationMenu.Root>
   );
