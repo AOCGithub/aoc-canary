@@ -45,7 +45,7 @@ export default function GridTemplateNavTwo() {
             <div className="w-[90%] max-w-[1536px] mx-auto">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                     {categoryImages && categoryImages.map((item) => (
-                        <a  key={item.alt} href={item.href}>
+                        <a key={item.alt} href={item.href}>
                             <img src={item.src}  alt={item.alt}/>
                         </a>
                     ))}

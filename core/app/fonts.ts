@@ -1,4 +1,4 @@
-import { DM_Serif_Text, Inter, Roboto_Mono, Rubik } from 'next/font/google';
+import { DM_Serif_Text, Roboto_Mono, Rubik } from 'next/font/google';
 
 const rubik = Rubik({
   display: 'swap',
