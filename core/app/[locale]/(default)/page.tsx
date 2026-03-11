@@ -35,21 +35,21 @@ export default async function Home({ params }: Props) {
     return getPageData(currencyCode, customerAccessToken);
   });
 
-  const streamableFeaturedProducts = Streamable.from(async () => {
-    const data = await streamablePageData;
+  // const streamableFeaturedProducts = Streamable.from(async () => {
+  //   const data = await streamablePageData;
 
-    const featuredProducts = removeEdgesAndNodes(data.site.featuredProducts);
+  //   const featuredProducts = removeEdgesAndNodes(data.site.featuredProducts);
 
-    const { defaultOutOfStockMessage, showOutOfStockMessage, showBackorderMessage } =
-      data.site.settings?.inventory ?? {};
+  //   const { defaultOutOfStockMessage, showOutOfStockMessage, showBackorderMessage } =
+  //     data.site.settings?.inventory ?? {};
 
-    return productCardTransformer(
-      featuredProducts,
-      format,
-      showOutOfStockMessage ? defaultOutOfStockMessage : undefined,
-      showBackorderMessage,
-    );
-  });
+  //   return productCardTransformer(
+  //     featuredProducts,
+  //     format,
+  //     showOutOfStockMessage ? defaultOutOfStockMessage : undefined,
+  //     showBackorderMessage,
+  //   );
+  // });
 
   const streamableNewestProducts = Streamable.from(async () => {
     const data = await streamablePageData;
