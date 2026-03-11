@@ -86,21 +86,21 @@ export default async function Home({ params }: Props) {
         <div className='w-[90%] mx-auto max-w-[1536px]'>
           <div className='border-[#CDD1DA] border-[1px] rounded-[6px] flex items-center justify-between px-[82px] py-[24px]'>
             <div className='flex items-center justify-center gap-3'>
-              <img className='h-[48px] w-[48px] object-contain' src='https://cdn11.bigcommerce.com/s-t0676dlrio/images/stencil/original/image-manager/iso-icon-ezgif.com-webp-to-png-converter-1-2x.png?t=1772776789'/>
+              <img className='h-[48px] w-[48px] object-contain' alt='trusted partners' src='https://cdn11.bigcommerce.com/s-t0676dlrio/images/stencil/original/image-manager/iso-icon-ezgif.com-webp-to-png-converter-1-2x.png?t=1772776789'/>
               <div className='flex flex-col items-start justify-center'>
                 <p className='text-[#224086] text-[14px] font-[700]'>Certified ISO 9001:2015 Standard Company</p>
                 <p className='text-[12px]'>Trusted partner for rope, safety and rigging products</p>
               </div>
             </div>
             <div className='flex items-center justify-center gap-3'>
-              <img className='h-[48px] w-[48px] object-contain' src='https://cdn11.bigcommerce.com/s-t0676dlrio/images/stencil/original/image-manager/iso-icon-ezgif.com-webp-to-png-converter-1-2x.png?t=1772776789'/>
+              <img className='h-[48px] w-[48px] object-contain' alt='trusted partners' src='https://cdn11.bigcommerce.com/s-t0676dlrio/images/stencil/original/image-manager/iso-icon-ezgif.com-webp-to-png-converter-1-2x.png?t=1772776789'/>
               <div className='flex flex-col items-start justify-center'>
                 <p className='text-[#224086] text-[14px] font-[700]'>Certified ISO 9001:2015 Standard Company</p>
                 <p className='text-[12px]'>Trusted partner for rope, safety and rigging products</p>
               </div>
             </div>
             <div className='flex items-center justify-center gap-3'>
-              <img className='h-[48px] w-[48px] object-contain' src='https://cdn11.bigcommerce.com/s-t0676dlrio/images/stencil/original/image-manager/iso-icon-ezgif.com-webp-to-png-converter-1-2x.png?t=1772776789'/>
+              <img className='h-[48px] w-[48px] object-contain' alt='trusted partners' src='https://cdn11.bigcommerce.com/s-t0676dlrio/images/stencil/original/image-manager/iso-icon-ezgif.com-webp-to-png-converter-1-2x.png?t=1772776789'/>
               <div className='flex flex-col items-start justify-center'>
                 <p className='text-[#224086] text-[14px] font-[700]'>Certified ISO 9001:2015 Standard Company</p>
                 <p className='text-[12px]'>Trusted partner for rope, safety and rigging products</p>
