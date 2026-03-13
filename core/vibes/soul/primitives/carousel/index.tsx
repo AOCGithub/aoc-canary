@@ -112,7 +112,7 @@ function Carousel({
       <div
         {...rest}
         aria-roledescription="carousel"
-        className={clsx('relative @container', hideOverflow && 'overflow-hidden', className)}
+        className={clsx('relative @container w-[100%] !overflow-hidden', hideOverflow && 'overflow-hidden', className)}
         onKeyDownCapture={handleKeyDown}
         role="region"
       >
@@ -137,7 +137,7 @@ function CarouselItem({ className, ...rest }: React.HTMLAttributes<HTMLDivElemen
     <div
       {...rest}
       aria-roledescription="slide"
-      className={clsx('min-w-0 shrink-0 grow-0 pl-4 @2xl:pl-5', className)}
+      className={clsx('min-w-0 shrink-0 grow-0 pl-4 @2xl:pl-8', className)}
       role="group"
     />
   );

@@ -23,10 +23,10 @@ export interface SectionLayoutProps {
  */
 export function SectionLayout({ className, children, containerSize = '2xl' }: SectionLayoutProps) {
   return (
-    <section className={clsx('overflow-hidden @container', className)}>
+    <section className={clsx('!overflow-hidden @container', className)}>
       <div
         className={clsx(
-          'mx-auto px-4 py-10 @xl:px-6 @xl:py-14 @4xl:px-8 @4xl:py-20',
+          'mx-auto py-10 @xl:py-14 @4xl:py-20 !overflow-hidden', //remove px and added overflow hidden
           {
             md: 'max-w-[var(--section-max-width-md,768px)]',
             lg: 'max-w-[var(--section-max-width-lg,1024px)]',

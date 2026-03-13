@@ -69,7 +69,11 @@ export function FeaturedProductCarousel({
           </Link>
         )}
       </div>
-      <div className="group/product-carousel">
+      <div className="group/product-carousel flex flex-row gap-5">
+        {/* custom */}
+        <div className='w-auto h-auto'>
+          <img className='h-[472px] w-auto object-cover rounded-[8px]' src='https://cdn11.bigcommerce.com/s-t0676dlrio/images/stencil/original/image-manager/mini-banner-trending-items-300-x-512-2x.png?t=1773280667' alt='mini banner trending'/>
+        </div>
         <ProductCarousel
           emptyStateSubtitle={emptyStateSubtitle}
           emptyStateTitle={emptyStateTitle}

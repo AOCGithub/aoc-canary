@@ -9,6 +9,8 @@ import { WishlistItemProductFragment } from '~/components/wishlist/fragment';
 
 import { pricesTransformer } from './prices-transformer';
 
+// this is where you will update after graphql from product-card fragments
+
 const getInventoryMessage = (
   product: ResultOf<typeof ProductCardFragment>,
   outOfStockMessage?: string,

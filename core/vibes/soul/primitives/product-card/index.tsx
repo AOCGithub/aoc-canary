@@ -1,13 +1,18 @@
+'use client';
+
 import { clsx } from 'clsx';
+import { startTransition, useActionState, useEffect } from 'react';
+import { useFormStatus } from 'react-dom';
 
 import { Badge } from '@/vibes/soul/primitives/badge';
 import { Price, PriceLabel } from '@/vibes/soul/primitives/price-label';
+import { toast } from '@/vibes/soul/primitives/toaster';
 import * as Skeleton from '@/vibes/soul/primitives/skeleton';
 import { Image } from '~/components/image';
 import { Link } from '~/components/link';
+import { addToCart } from '~/app/[locale]/(default)/compare/_actions/add-to-cart';
 
 import { Rating } from '../rating';
-
 import { Compare } from './compare';
 
 export interface Product {
@@ -36,28 +41,35 @@ export interface ProductCardProps {
   showRating?: boolean;
 }
 
-// eslint-disable-next-line valid-jsdoc
-/**
- * This component supports various CSS variables for theming. Here's a comprehensive list, along
- * with their default values:
- *
- * ```css
- * :root {
- *   --product-card-focus: hsl(var(--primary));
- *   --product-card-light-offset: hsl(var(--background));
- *   --product-card-light-background: hsl(var(--contrast-100));
- *   --product-card-light-title: hsl(var(--foreground));
- *   --product-card-light-subtitle: hsl(var(--foreground) / 75%);
- *   --product-card-light-message: hsl(var(--foreground) / 75%);
- *   --product-card-dark-offset: hsl(var(--foreground));
- *   --product-card-dark-background: hsl(var(--contrast-500));
- *   --product-card-dark-title: hsl(var(--background));
- *   --product-card-dark-subtitle: hsl(var(--background) / 75%);
- *   --product-card-dark-message: hsl(var(--background) / 75%);
- *   --product-card-font-family: var(--font-family-body);
- * }
- * ```
- */
+function AddToCartButton({ colorScheme }: { colorScheme: 'light' | 'dark' }) {
+  const { pending } = useFormStatus();
+
+  return (
+    // <button
+    //   className={clsx(
+    //     'relative z-10 mt-3 w-full rounded-lg px-4 py-2 text-center text-sm font-medium transition-opacity hover:opacity-80 disabled:cursor-not-allowed disabled:opacity-50',
+    //     {
+    //       light: 'bg-[hsl(var(--foreground))] text-[hsl(var(--background))]',
+    //       dark: 'bg-[hsl(var(--background))] text-[hsl(var(--foreground))]',
+    //     }[colorScheme],
+    //   )}
+    //   disabled={pending}
+    //   type="submit"
+    // >
+    //   {pending ? 'Adding...' : 'Add to Cart'}
+    // </button>
+    <button
+      className={clsx(
+        'relative z-10 mt-3 w-full rounded-[3px] px-4 py-2 text-center text-sm font-medium transition-opacity hover:opacity-80 disabled:cursor-not-allowed disabled:opacity-50 bg-[#0D1E47] text-[#FFFFFF]',
+      )}
+      disabled={pending}
+      type="submit"
+    >
+      {pending ? 'Adding...' : 'Add to Cart'}
+    </button>
+  );
+}
+
 export function ProductCard({
   product: {
     id,
@@ -71,7 +83,7 @@ export function ProductCard({
     rating,
     numberOfReviews,
   },
-  showRating = false,
+  showRating = true,
   colorScheme = 'light',
   className,
   showCompare = false,
@@ -81,6 +93,22 @@ export function ProductCard({
   imagePriority = false,
   imageSizes = '(min-width: 80rem) 20vw, (min-width: 64rem) 25vw, (min-width: 42rem) 33vw, (min-width: 24rem) 50vw, 100vw',
 }: ProductCardProps) {
+  const [{ lastResult, successMessage }, formAction] = useActionState(addToCart, {
+    lastResult: null,
+  });
+
+  // add to cart request check
+  useEffect(() => {
+    if (lastResult?.status === 'success') {
+      toast.success(successMessage);
+    } else if (lastResult?.status === 'error') {
+      const errors = lastResult.error
+        ? Object.values(lastResult.error).flat().join(', ')
+        : 'Failed to add to cart';
+      toast.error(errors);
+    }
+  }, [lastResult, successMessage]);
+
   return (
     <article
       className={clsx(
@@ -142,7 +170,7 @@ export function ProductCard({
           <div className="flex-1 text-sm @[16rem]:text-base">
             <span
               className={clsx(
-                'line-clamp-2 font-semibold',
+                'line-clamp-2 font-semibold !text-[#224086]',
                 {
                   light: 'text-[var(--product-card-light-title,hsl(var(--foreground)))]',
                   dark: 'text-[var(--product-card-dark-title,hsl(var(--background)))]',
@@ -154,7 +182,7 @@ export function ProductCard({
             {subtitle != null && subtitle !== '' && (
               <span
                 className={clsx(
-                  'mb-1.5 block text-sm font-normal',
+                  'mb-1.5 block text-sm font-normal !hidden',
                   {
                     light: 'text-[var(--product-card-light-subtitle,hsl(var(--foreground)/75%))]',
                     dark: 'text-[var(--product-card-dark-subtitle,hsl(var(--background)/75%))]',
@@ -165,7 +193,10 @@ export function ProductCard({
               </span>
             )}
             {price != null && <PriceLabel colorScheme={colorScheme} price={price} />}
-            {showRating && typeof rating === 'number' && rating > 0 && (
+            {/* {showRating && typeof rating === 'number' && rating > 0 && (
+              <Rating className="mb-2 mt-1" numberOfReviews={numberOfReviews} rating={rating} />
+            )} */}
+            {showRating && rating != null && (
               <Rating className="mb-2 mt-1" numberOfReviews={numberOfReviews} rating={rating} />
             )}
             <span
@@ -181,6 +212,13 @@ export function ProductCard({
             </span>
           </div>
         </div>
+
+        {/* custom Add to Cart form */}
+        <form action={formAction}>
+          <input name="id" type="hidden" value={id} />
+          <AddToCartButton colorScheme={colorScheme} />
+        </form>
+
         {href !== '#' && (
           <Link
             aria-label={title}

@@ -50,6 +50,7 @@ export interface ProductCarouselProps {
  * }
  * ```
  */
+
 export function ProductCarousel({
   products: streamableProducts,
   className,
@@ -90,12 +91,14 @@ export function ProductCarousel({
           );
         }
 
+        console.log(products)
+
         return (
           <Carousel className={className} hideOverflow={hideOverflow}>
             <CarouselContent className="-ml-4 mb-10 @2xl:-ml-5">
               {products.map(({ id, ...product }) => (
                 <CarouselItem
-                  className="basis-full pl-4 @md:basis-1/2 @lg:basis-1/3 @2xl:basis-1/4 @2xl:pl-5"
+                  className="basis-full pl-4 @md:basis-1/2 @lg:basis-1/4 @2xl:basis-1/5 @2xl:pl-5"
                   key={id}
                 >
                   <ProductCard
@@ -108,7 +111,8 @@ export function ProductCarousel({
               ))}
             </CarouselContent>
             {(showButtons || showScrollbar) && (
-              <div className="mt-10 flex w-full items-center justify-between gap-8">
+              // flex
+              <div className="mt-10 !hidden w-full items-center justify-between gap-8 "> 
                 <CarouselScrollbar
                   className={clsx(!showScrollbar && 'pointer-events-none invisible')}
                   colorScheme={colorScheme}
