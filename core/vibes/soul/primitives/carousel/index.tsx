@@ -126,8 +126,8 @@ function CarouselContent({ className, ...rest }: React.HTMLAttributes<HTMLDivEle
   const { carouselRef } = useCarousel();
 
   return (
-    <div className="w-full" ref={carouselRef}>
-      <div {...rest} className={clsx('-ml-4 flex @2xl:-ml-5', className)} />
+    <div className="w-full test" ref={carouselRef}>
+      <div {...rest} className={clsx('-ml-4 flex @2xl:-ml-5 pt-[24px]', className)} />
     </div>
   );
 }

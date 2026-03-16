@@ -168,30 +168,30 @@ export function ProductCard({
 
         <div className="mt-2 flex flex-col items-start gap-x-4 gap-y-3 px-1 @xs:mt-3 @2xl:flex-row">
           <div className="flex-1 text-sm @[16rem]:text-base">
-            <span
-              className={clsx(
-                'line-clamp-2 font-semibold !text-[#224086]',
-                {
-                  light: 'text-[var(--product-card-light-title,hsl(var(--foreground)))]',
-                  dark: 'text-[var(--product-card-dark-title,hsl(var(--background)))]',
-                }[colorScheme],
-              )}
-            >
-              {title}
-            </span>
             {subtitle != null && subtitle !== '' && (
               <span
                 className={clsx(
-                  'mb-1.5 block text-sm font-normal !hidden',
-                  {
-                    light: 'text-[var(--product-card-light-subtitle,hsl(var(--foreground)/75%))]',
-                    dark: 'text-[var(--product-card-dark-subtitle,hsl(var(--background)/75%))]',
-                  }[colorScheme],
+                  'mb-1.5 block text-sm font-[600] text-[#222] !capitalize',
+                  // {
+                  //   light: 'text-[var(--product-card-light-subtitle,hsl(var(--foreground)/75%))]',
+                  //   dark: 'text-[var(--product-card-dark-subtitle,hsl(var(--background)/75%))]',
+                  // }[colorScheme],
                 )}
               >
                 {subtitle}
               </span>
             )}
+            <span
+              className={clsx(
+                'line-clamp-2 font-[400] !text-[#224086] text-[14px] leading-[140%]',
+                // {
+                //   light: 'text-[var(--product-card-light-title,hsl(var(--foreground)))]',
+                //   dark: 'text-[var(--product-card-dark-title,hsl(var(--background)))]',
+                // }[colorScheme],
+              )}
+            >
+              {title}
+            </span>
             {price != null && <PriceLabel colorScheme={colorScheme} price={price} />}
             {/* {showRating && typeof rating === 'number' && rating > 0 && (
               <Rating className="mb-2 mt-1" numberOfReviews={numberOfReviews} rating={rating} />
@@ -235,6 +235,8 @@ export function ProductCard({
             <span className="sr-only">View product</span>
           </Link>
         )}
+
+
       </div>
       {showCompare && (
         <div className="ml-1 mt-auto shrink-0">

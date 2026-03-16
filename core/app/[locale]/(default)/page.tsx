@@ -110,17 +110,6 @@ export default async function Home({ params }: Props) {
         </div>
       </div>
 
-      <GridTemplateNavTwo />
-
-      {/* <FeaturedProductList
-        cta={{ label: t('FeaturedProducts.cta'), href: '/shop-all' }}
-        description={t('FeaturedProducts.description')}
-        emptyStateSubtitle={t('FeaturedProducts.emptyStateSubtitle')}
-        emptyStateTitle={t('FeaturedProducts.emptyStateTitle')}
-        products={streamableFeaturedProducts}
-        title={t('FeaturedProducts.title')}
-      /> */}
-
       <FeaturedProductCarousel
         cta={{ label: t('NewestProducts.cta'), href: '/shop-all/?sort=newest' }}
         description={t('NewestProducts.description')}
@@ -131,6 +120,17 @@ export default async function Home({ params }: Props) {
         products={streamableNewestProducts}
         title={t('NewestProducts.title')}
       />
+
+      <GridTemplateNavTwo />
+
+      {/* <FeaturedProductList
+        cta={{ label: t('FeaturedProducts.cta'), href: '/shop-all' }}
+        description={t('FeaturedProducts.description')}
+        emptyStateSubtitle={t('FeaturedProducts.emptyStateSubtitle')}
+        emptyStateTitle={t('FeaturedProducts.emptyStateTitle')}
+        products={streamableFeaturedProducts}
+        title={t('FeaturedProducts.title')}
+      /> */}
 
       <Stream fallback={null} value={streamableShowNewsletterSignup}>
         {(showNewsletterSignup) => showNewsletterSignup && <Subscribe />}

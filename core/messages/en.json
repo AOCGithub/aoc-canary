@@ -586,9 +586,9 @@
       "giftCertificates": "Gift certificates"
     },
     "Subscribe": {
-      "title": "Sign up for our newsletter",
+      "title": "Sign Up Here to Receive Exclusive Offer",
       "placeholder": "Enter your email",
-      "description": "Stay up to date with the latest news and offers from our store.",
+      "description": "",
       "subscribedToNewsletter": "You have been subscribed to our newsletter!",
       "Errors": {
         "emailRequired": "Email is required",

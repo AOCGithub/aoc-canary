@@ -54,7 +54,7 @@ export function FeaturedProductCarousel({
     <SectionLayout containerSize="2xl">
       <div className="mb-6 flex w-full flex-row flex-wrap items-end justify-between gap-x-8 gap-y-6 @4xl:mb-8">
         <header className="font-[family-name:var(--featured-product-carousel-font-family,var(--font-family-body))]">
-          <h2 className="font-[family-name:var(--featured-product-carousel-title-font-family,var(--font-family-heading))] text-2xl leading-none text-[var(--featured-product-carousel-title,hsl(var(--foreground)))] @xl:text-3xl @4xl:text-4xl">
+          <h2 className="font-[family-name:var(--featured-product-carousel-title-font-family,var(--font-family-body))] !text-[18px] !font-[600] !text-[#224086] leading-none text-[var(--featured-product-carousel-title,hsl(var(--foreground)))] @xl:text-3xl @4xl:text-4xl">
             {title}
           </h2>
           {description != null && description !== '' && (
@@ -63,16 +63,16 @@ export function FeaturedProductCarousel({
             </p>
           )}
         </header>
-        {cta != null && cta.href !== '' && cta.label !== '' && (
+        {/* {cta != null && cta.href !== '' && cta.label !== '' && (
           <Link className="group/underline focus:outline-none" href={cta.href}>
             <AnimatedUnderline className="mr-3">{cta.label}</AnimatedUnderline>
           </Link>
-        )}
+        )} */}
       </div>
-      <div className="group/product-carousel flex flex-row gap-5">
+      <div className="group/product-carousel flex flex-row gap-5 border-[1px] rounded-[6px] border-[#CDD1DA] pr-[24px]">
         {/* custom */}
-        <div className='w-auto h-auto'>
-          <img className='h-[472px] w-auto object-cover rounded-[8px]' src='https://cdn11.bigcommerce.com/s-t0676dlrio/images/stencil/original/image-manager/mini-banner-trending-items-300-x-512-2x.png?t=1773280667' alt='mini banner trending'/>
+        <div className='carousel-side-banner w-auto h-auto'>
+          {/* <img className='h-[472px] !h-auto w-auto object-cover rounded-[8px]' src='https://cdn11.bigcommerce.com/s-t0676dlrio/images/stencil/original/image-manager/mini-banner-trending-items-300-x-512-2x.png?t=1773280667' alt='mini banner trending'/> */}
         </div>
         <ProductCarousel
           emptyStateSubtitle={emptyStateSubtitle}
