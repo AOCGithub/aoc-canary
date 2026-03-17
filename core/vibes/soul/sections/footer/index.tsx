@@ -89,9 +89,9 @@ export const Footer = ({
         className,
       )}
     >
-      <div className="mx-auto max-w-screen-2xl px-4 py-6 @xl:px-6 @xl:py-10 @4xl:px-8 @4xl:py-12">
-        <div className="flex flex-col justify-between gap-x-16 gap-y-12 @3xl:flex-row">
-          <div className="flex flex-col gap-4 @3xl:w-1/3 @3xl:gap-6">
+      <div className="mx-auto bg-[#DFE3EA]">
+        <div className="flex flex-col justify-between gap-x-16 gap-y-12 @3xl:flex-row max-w-[1536px] mx-auto pt-[60px] pb-[20px]">
+          <div className="flex flex-col gap-4 @3xl:w-1/3 @3xl:gap-6 !w-[20%]">
             {/* Logo Information */}
             <div className="flex items-center justify-start self-stretch">
               <Logo
@@ -105,7 +105,7 @@ export const Footer = ({
             </div>
 
             {/* Contact Information */}
-            <Stream fallback={<FooterContactSkeleton />} value={streamableContactInformation}>
+            {/* <Stream fallback={<FooterContactSkeleton />} value={streamableContactInformation}>
               {(contactInformation) => {
                 if (contactInformation?.address != null || contactInformation?.phone != null) {
                   return (
@@ -124,7 +124,10 @@ export const Footer = ({
                   );
                 }
               }}
-            </Stream>
+            </Stream> */}
+            <div>
+              <p>U.S. Rigging Supply is your trusted partner for rope, safety and rigging products</p>
+            </div>
 
             {/* Social Media Links */}
             <Stream fallback={<SocialMediaLinksSkeleton />} value={streamableSocialMediaLinks}>
@@ -157,7 +160,7 @@ export const Footer = ({
                 return (
                   <div
                     className={clsx(
-                      'grid max-w-5xl grid-cols-1 gap-y-8 @sm:grid-cols-2 @xl:gap-y-10 @2xl:grid-cols-3 @6xl:[grid-template-columns:_repeat(auto-fill,_minmax(220px,_1fr))]',
+                      'grid max-w-5xl grid-cols-1 gap-y-8 @sm:grid-cols-2 @xl:gap-y-10 @2xl:grid-cols-3 @6xl:[grid-template-columns:_repeat(auto-fill,_minmax(280px,_1fr))] !w-[80%]',
                     )}
                   >
                     {sections.map(({ title, links }, i) => (
@@ -191,28 +194,30 @@ export const Footer = ({
           </Stream>
         </div>
 
-        <div className="flex flex-col-reverse items-start gap-y-8 pt-16 @3xl:flex-row @3xl:items-center @3xl:pt-20">
-          {/* Copyright */}
-          <Stream fallback={<CopyrightSkeleton />} value={streamableCopyright}>
-            {(copyright) => {
-              if (copyright != null) {
-                return (
-                  <p className="flex-1 text-sm text-[var(--footer-copyright,hsl(var(--contrast-500)))]">
-                    {copyright}
-                  </p>
-                );
-              }
-            }}
-          </Stream>
+        <div className="bg-[#0D1E47] h-[50px] flex flex-col-reverse items-start gap-y-8 pt-4 @3xl:flex-row @3xl:items-center @3xl:pt-4">
+          <div className='max-w-[1536px] mx-auto'>
+            {/* Copyright */}
+            <Stream fallback={<CopyrightSkeleton />} value={streamableCopyright}>
+              {(copyright) => {
+                if (copyright != null) {
+                  return (
+                      <p className="flex-1 text-sm text-[var(--footer-copyright,hsl(var(--contrast-500)))]">
+                        {copyright}
+                      </p>
+                  );
+                }
+              }}
+            </Stream>
 
-          {/* Payment Icons */}
-          <Stream fallback={<PaymentIconsSkeleton />} value={streamablePaymentIcons}>
-            {(paymentIcons) => {
-              if (paymentIcons != null) {
-                return <div className="flex flex-wrap gap-2">{paymentIcons}</div>;
-              }
-            }}
-          </Stream>
+            {/* Payment Icons */}
+            <Stream fallback={<PaymentIconsSkeleton />} value={streamablePaymentIcons}>
+              {(paymentIcons) => {
+                if (paymentIcons != null) {
+                  return <div className="flex flex-wrap gap-2">{paymentIcons}</div>;
+                }
+              }}
+            </Stream>
+          </div>
         </div>
       </div>
     </footer>

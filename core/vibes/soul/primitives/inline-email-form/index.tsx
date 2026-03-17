@@ -52,10 +52,10 @@ export function InlineEmailForm({
     <form {...getFormProps(form)} action={formAction} className={clsx('space-y-2', className)}>
       <div
         className={clsx(
-          'relative !rounded-[99px] border bg-background text-base transition-colors duration-200 focus-within:border-primary focus:outline-none overflow-hidden',
+          'relative !rounded-[99px] border bg-background text-base transition-colors duration-200 overflow-hidden',
           form.errors?.length || fields.email.errors?.length
-            ? 'border-error focus-within:border-error'
-            : 'border-black focus-within:border-primary',
+            // ? 'border-error focus-within:border-error'
+            // : 'border-black focus-within:border-primary',
         )}
       >
         <input
