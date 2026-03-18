@@ -15,6 +15,7 @@ import { getPageData } from './page-data';
 // custom
 import GridTemplateNavOne from '@/vibes/soul/sections/custom/grid_template_nav_one/Grid_template_nav_one';
 import GridTemplateNavTwo from '@/vibes/soul/sections/custom/grid_template_nav_two/Grid_template_nav_two';
+import ProductCarousel from '@/vibes/soul/sections/custom/carousel/product_carousel';
 
 interface Props {
   params: Promise<{ locale: string }>;
@@ -124,7 +125,7 @@ export default async function Home({ params }: Props) {
       <GridTemplateNavTwo />
 
       <div className='max-w-[1536px] w-full mx-auto py-6 my-8'>
-
+        <ProductCarousel />
       </div>
 
       {/* <FeaturedProductList
