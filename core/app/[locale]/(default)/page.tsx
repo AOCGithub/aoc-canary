@@ -123,6 +123,10 @@ export default async function Home({ params }: Props) {
 
       <GridTemplateNavTwo />
 
+      <div className='max-w-[1536px] w-full mx-auto py-6 my-8'>
+
+      </div>
+
       {/* <FeaturedProductList
         cta={{ label: t('FeaturedProducts.cta'), href: '/shop-all' }}
         description={t('FeaturedProducts.description')}

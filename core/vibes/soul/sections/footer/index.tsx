@@ -85,7 +85,7 @@ export const Footer = ({
   return (
     <footer
       className={clsx(
-        'group/footer border-b-4 border-t border-b-[var(--footer-border-bottom,hsl(var(--primary)))] border-t-[var(--footer-border-top,hsl(var(--contrast-100)))] bg-[var(--footer-background,hsl(var(--background)))] @container',
+        'group/footer border-b-4 border-t border-b-[var(--footer-border-bottom,hsl(var(--primary)))] border-t-[var(--footer-border-top,hsl(var(--contrast-100)))] bg-[var(--footer-background,hsl(var(--background)))] @container border-[0px] border-none',
         className,
       )}
     >
@@ -129,6 +129,18 @@ export const Footer = ({
               <p>U.S. Rigging Supply is your trusted partner for rope, safety and rigging products</p>
             </div>
 
+            {/* custom icon container */}
+            <div className='w-auto'>
+              <div className='flex items-center justify-start gap-[12px]'>
+                <img className='w-[46px] h-[45px] object-contain' src='https://cdn11.bigcommerce.com/s-t0676dlrio/images/stencil/original/image-manager/cs-icon.png?t=1771987367'/>
+                <div>
+                  <p className='text-[#666666] text-[13px] leading-[125%]'>Call Us Toll-Free</p>
+                  <p className='text-[#0D1E47] text-[16px] font-[700]'>Call(888) 260-7444</p>
+                  <p className='text-[#666666] text-[13px] leading-[125%]'>8am - 5pm PST (Mon - fri)</p>
+                </div>
+              </div>
+            </div>
+
             {/* Social Media Links */}
             <Stream fallback={<SocialMediaLinksSkeleton />} value={streamableSocialMediaLinks}>
               {(socialMediaLinks) => {
@@ -166,7 +178,7 @@ export const Footer = ({
                     {sections.map(({ title, links }, i) => (
                       <div className="pr-8" key={i}>
                         {title != null && (
-                          <span className="mb-3 block font-semibold text-[var(--footer-section-title,hsl(var(--foreground)))]">
+                          <span className="mb-3 block font-semibold text-[var(--footer-section-title,hsl(var(--foreground)))] uppercase">
                             {title}
                           </span>
                         )}
@@ -176,7 +188,7 @@ export const Footer = ({
                             return (
                               <li key={idx}>
                                 <Link
-                                  className="block rounded-lg py-2 text-sm font-medium text-[var(--footer-link,hsl(var(--contrast-500)))] ring-[var(--footer-focus,hsl(var(--primary)))] transition-colors duration-300 hover:text-[var(--footer-link-hover,hsl(var(--foreground)))] focus-visible:outline-0 focus-visible:ring-2"
+                                  className="footer-menus block rounded-lg py-[.4rem] text-[var(--footer-link,hsl(var(--contrast-500)))] ring-[var(--footer-focus,hsl(var(--primary)))] transition-colors duration-300 hover:text-[#0D1E47] focus-visible:outline-0 focus-visible:ring-2 text-[#596582] text-[14px] font-[400]"
                                   href={link.href}
                                 >
                                   {link.label}
@@ -194,14 +206,14 @@ export const Footer = ({
           </Stream>
         </div>
 
-        <div className="bg-[#0D1E47] h-[50px] flex flex-col-reverse items-start gap-y-8 pt-4 @3xl:flex-row @3xl:items-center @3xl:pt-4">
-          <div className='max-w-[1536px] mx-auto'>
+        <div className="bg-[#0D1E47] h-[50px] flex flex-col-reverse items-start gap-y-8 @3xl:flex-row @3xl:items-center">
+          <div className='max-w-[1536px] w-[100%] mx-auto flex items-center justify-center'>
             {/* Copyright */}
             <Stream fallback={<CopyrightSkeleton />} value={streamableCopyright}>
               {(copyright) => {
                 if (copyright != null) {
                   return (
-                      <p className="flex-1 text-sm text-[var(--footer-copyright,hsl(var(--contrast-500)))]">
+                      <p className="flex-1 text-sm text-[var(--footer-copyright,hsl(var(--contrast-500)))] !text-[#fff]">
                         {copyright}
                       </p>
                   );
@@ -213,7 +225,7 @@ export const Footer = ({
             <Stream fallback={<PaymentIconsSkeleton />} value={streamablePaymentIcons}>
               {(paymentIcons) => {
                 if (paymentIcons != null) {
-                  return <div className="flex flex-wrap gap-2">{paymentIcons}</div>;
+                  return <div className="flex flex-wrap gap-2 text-[#ffffff]">{paymentIcons}</div>;
                 }
               }}
             </Stream>

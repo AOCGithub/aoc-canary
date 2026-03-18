@@ -37,7 +37,7 @@ export function Subscribe({
         <div className="w-full flex-1">
           <div
             className={clsx(
-              'flex w-full flex-col gap-10 px-4 py-7 @xl:px-6 @xl:py-7 @4xl:gap-16 @4xl:px-8 @4xl:py-7',
+              'flex w-full flex-col gap-10 px-4 pt-[1.25rem] pb-[1.55rem] @xl:px-6 @xl:py-7 @4xl:gap-16 @4xl:px-8 @4xl:py-7',
               image != null ? '@4xl:max-w-4xl' : 'mx-auto max-w-screen-2xl @4xl:flex-row',
             )}
           >
