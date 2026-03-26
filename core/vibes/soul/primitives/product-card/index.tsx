@@ -1,7 +1,7 @@
 'use client';
 
 import { clsx } from 'clsx';
-import { startTransition, useActionState, useEffect } from 'react';
+import { useActionState, useEffect } from 'react';
 import { useFormStatus } from 'react-dom';
 
 import { Badge } from '@/vibes/soul/primitives/badge';
@@ -26,6 +26,7 @@ export interface Product {
   rating?: number;
   inventoryMessage?: string;
   numberOfReviews?: number;
+  hasVariants?: boolean;
 }
 
 export interface ProductCardProps {
@@ -41,27 +42,16 @@ export interface ProductCardProps {
   showRating?: boolean;
 }
 
-function AddToCartButton({ colorScheme }: { colorScheme: 'light' | 'dark' }) {
+function AddToCartButton({
+  colorScheme,
+}: {
+  colorScheme: 'light' | 'dark';
+}) {
   const { pending } = useFormStatus();
 
   return (
-    // <button
-    //   className={clsx(
-    //     'relative z-10 mt-3 w-full rounded-lg px-4 py-2 text-center text-sm font-medium transition-opacity hover:opacity-80 disabled:cursor-not-allowed disabled:opacity-50',
-    //     {
-    //       light: 'bg-[hsl(var(--foreground))] text-[hsl(var(--background))]',
-    //       dark: 'bg-[hsl(var(--background))] text-[hsl(var(--foreground))]',
-    //     }[colorScheme],
-    //   )}
-    //   disabled={pending}
-    //   type="submit"
-    // >
-    //   {pending ? 'Adding...' : 'Add to Cart'}
-    // </button>
     <button
-      className={clsx(
-        'relative z-10 mt-3 w-full rounded-[3px] px-4 py-2 text-center text-sm font-medium transition-opacity hover:opacity-80 disabled:cursor-not-allowed disabled:opacity-50 bg-[#0D1E47] text-[#FFFFFF]',
-      )}
+      className="relative z-10 mt-3 w-full rounded-[3px] px-4 py-2 text-center text-sm font-medium transition-opacity hover:opacity-80 disabled:cursor-not-allowed disabled:opacity-50 bg-[#0D1E47] text-[#FFFFFF]"
       disabled={pending}
       type="submit"
     >
@@ -82,6 +72,7 @@ export function ProductCard({
     inventoryMessage,
     rating,
     numberOfReviews,
+    hasVariants, // <-- added here
   },
   showRating = true,
   colorScheme = 'light',
@@ -172,10 +163,6 @@ export function ProductCard({
               <span
                 className={clsx(
                   'mb-1.5 block text-sm font-[600] text-[#222] !capitalize',
-                  // {
-                  //   light: 'text-[var(--product-card-light-subtitle,hsl(var(--foreground)/75%))]',
-                  //   dark: 'text-[var(--product-card-dark-subtitle,hsl(var(--background)/75%))]',
-                  // }[colorScheme],
                 )}
               >
                 {subtitle}
@@ -184,18 +171,11 @@ export function ProductCard({
             <span
               className={clsx(
                 'line-clamp-2 font-[400] !text-[#224086] text-[14px] leading-[140%]',
-                // {
-                //   light: 'text-[var(--product-card-light-title,hsl(var(--foreground)))]',
-                //   dark: 'text-[var(--product-card-dark-title,hsl(var(--background)))]',
-                // }[colorScheme],
               )}
             >
               {title}
             </span>
             {price != null && <PriceLabel colorScheme={colorScheme} price={price} />}
-            {/* {showRating && typeof rating === 'number' && rating > 0 && (
-              <Rating className="mb-2 mt-1" numberOfReviews={numberOfReviews} rating={rating} />
-            )} */}
             {showRating && rating != null && (
               <Rating className="mb-2 mt-1" numberOfReviews={numberOfReviews} rating={rating} />
             )}
@@ -213,11 +193,20 @@ export function ProductCard({
           </div>
         </div>
 
-        {/* custom Add to Cart form */}
-        <form action={formAction}>
-          <input name="id" type="hidden" value={id} />
-          <AddToCartButton colorScheme={colorScheme} />
-        </form>
+        {/* Add to Cart or View Options */}
+        {hasVariants ? (
+          <Link
+            href={href}
+            className="relative z-10 mt-3 block w-full rounded-[3px] px-4 py-2 text-center text-sm font-medium transition-opacity hover:opacity-80 bg-[#0D1E47] text-[#FFFFFF]"
+          >
+            View Options
+          </Link>
+        ) : (
+          <form action={formAction}>
+            <input name="id" type="hidden" value={id} />
+            <AddToCartButton colorScheme={colorScheme} />
+          </form>
+        )}
 
         {href !== '#' && (
           <Link
@@ -235,9 +224,8 @@ export function ProductCard({
             <span className="sr-only">View product</span>
           </Link>
         )}
-
-
       </div>
+
       {showCompare && (
         <div className="ml-1 mt-auto shrink-0">
           <Compare

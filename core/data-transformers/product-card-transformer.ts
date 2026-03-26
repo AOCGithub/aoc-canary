@@ -11,6 +11,8 @@ import { pricesTransformer } from './prices-transformer';
 
 // this is where you will update after graphql from product-card fragments
 
+type ExtendedProduct = Product & { hasVariants?: boolean };
+
 const getInventoryMessage = (
   product: ResultOf<typeof ProductCardFragment>,
   outOfStockMessage?: string,
@@ -53,7 +55,7 @@ export const singleProductCardTransformer = (
   format: ExistingResultType<typeof getFormatter>,
   outOfStockMessage?: string,
   showBackorderMessage?: boolean,
-): Product => {
+): ExtendedProduct => {
   return {
     id: product.entityId.toString(),
     title: product.name,
@@ -69,6 +71,9 @@ export const singleProductCardTransformer = (
       'variants' in product
         ? getInventoryMessage(product, outOfStockMessage, showBackorderMessage)
         : undefined,
+    hasVariants: 'variants' in product
+    ? removeEdgesAndNodes(product.variants).length > 1
+    : false,
   };
 };
 
@@ -77,7 +82,7 @@ export const productCardTransformer = (
   format: ExistingResultType<typeof getFormatter>,
   outOfStockMessage?: string,
   showBackorderMessage?: boolean,
-): Product[] => {
+): ExtendedProduct[] => {
   return products.map((product) =>
     singleProductCardTransformer(product, format, outOfStockMessage, showBackorderMessage),
   );

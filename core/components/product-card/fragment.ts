@@ -28,7 +28,7 @@ export const ProductCardFragment = graphql(
         numberOfReviews
         averageRating
       }
-      variants(first: 1) {
+      variants(first: 2) {
         edges {
           node {
             entityId

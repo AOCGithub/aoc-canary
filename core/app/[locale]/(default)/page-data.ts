@@ -17,7 +17,7 @@ export const LayoutQuery = graphql(
       }
     }
   `,
-  [HeaderFragment, FooterFragment],
+  [HeaderFragment, FooterFragment], 
 );
 
 const GiftCertificatesEnabledFragment = graphql(`
