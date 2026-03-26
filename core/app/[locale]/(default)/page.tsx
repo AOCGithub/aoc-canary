@@ -15,7 +15,7 @@ import { getPageData } from './page-data';
 // custom
 import GridTemplateNavOne from '@/vibes/soul/sections/custom/grid_template_nav_one/Grid_template_nav_one';
 import GridTemplateNavTwo from '@/vibes/soul/sections/custom/grid_template_nav_two/Grid_template_nav_two';
-import ProductCarousel from '@/vibes/soul/sections/custom/carousel/product_carousel';
+import ProductCarousel from '@/vibes/soul/sections/custom/carousel/Product_carousel';
 
 interface Props {
   params: Promise<{ locale: string }>;
