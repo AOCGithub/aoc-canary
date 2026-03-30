@@ -68,7 +68,7 @@ export default async function Home({ params }: Props) {
     );
   });
 
-  const streamableShowNewsletterSignup = Streamable.from(async () => {
+  const streamableShowNewsletterSignup = Streamable.from(async () => { 
     const data = await streamablePageData;
 
     const { showNewsletterSignup } = data.site.settings?.newsletter ?? {};
@@ -85,7 +85,7 @@ export default async function Home({ params }: Props) {
 
       <div className='w-full h-auto my-[35px]'>
         <div className='w-[90%] mx-auto max-w-[1536px]'>
-          <div className='border-[#CDD1DA] border-[1px] rounded-[6px] flex items-center justify-between px-[82px] py-[24px]'>
+          <div className='border-[#CDD1DA] border-[1px] rounded-[6px] flex items-center justify-between xxs:px-[28px] xxs:py-[24px] xxs:flex-col lg:flex-row xxs:gap-[20px]'>
             <div className='flex items-center justify-center gap-3'>
               <img className='h-[48px] w-[48px] object-contain' alt='trusted partners' src='https://cdn11.bigcommerce.com/s-t0676dlrio/images/stencil/original/image-manager/iso-icon-ezgif.com-webp-to-png-converter-1-2x.png?t=1772776789'/>
               <div className='flex flex-col items-start justify-center'>
@@ -124,7 +124,7 @@ export default async function Home({ params }: Props) {
 
       <GridTemplateNavTwo />
 
-      <div className='max-w-[1536px] w-full mx-auto py-6 my-8'>
+      <div className='max-w-[1536px] w-[90%] mx-auto py-6 my-8'>
         <ProductCarousel />
       </div>
 

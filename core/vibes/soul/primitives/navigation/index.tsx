@@ -475,7 +475,7 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
         </div>
 
         {/* custom icon container */}
-        <div className='min-w-[25%]'>
+        <div className='min-w-[25%] xxs:hidden remove-head-content:block'>
           <div className='flex items-center justify-center gap-[12px]'>
             <img className='w-[36px] h-[35px] object-contain' src='https://cdn11.bigcommerce.com/s-t0676dlrio/images/stencil/original/image-manager/cs-icon.png?t=1771987367'/>
             <div>
@@ -486,7 +486,7 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
         </div>
 
         {/* custom search input */}
-        <div className="@4xl:flex items-center gap-2 rounded-[150px] bg-[#E5E7EE] w-[42%] border-[1px] border-[#224086] overflow-hidden min-w-[44%]">
+        <div className="@4xl:flex items-center gap-2 rounded-[150px] bg-[#E5E7EE] w-[42%] border-[1px] border-[#224086] overflow-hidden min-w-[44%] xxs:hidden remove-head-content:flex">
           <form
             action={searchHref}
             className="flex flex-1 items-center gap-2 pl-[24px] h-[48px]"

@@ -90,8 +90,8 @@ export const Footer = ({
       )}
     >
       <div className="mx-auto bg-[#DFE3EA]">
-        <div className="flex flex-col justify-between gap-x-16 gap-y-12 @3xl:flex-row max-w-[1536px] mx-auto pt-[60px] pb-[20px]">
-          <div className="flex flex-col gap-4 @3xl:w-1/3 @3xl:gap-6 !w-[20%]">
+        <div className="flex flex-col justify-between gap-x-16 gap-y-12 @3xl:flex-row max-w-[1536px] xxs:w-[95%] lg:w-[90%] mx-auto pt-[60px] pb-[20px] xxs:px-[24px]">
+          <div className="flex flex-col gap-4 @3xl:w-1/3 @3xl:gap-6 xxs:!w-[100%] md:!w-[20%]">
             {/* Logo Information */}
             <div className="flex items-center justify-start self-stretch">
               <Logo

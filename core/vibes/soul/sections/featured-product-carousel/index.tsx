@@ -69,9 +69,9 @@ export function FeaturedProductCarousel({
           </Link>
         )} */}
       </div>
-      <div className="group/product-carousel flex flex-row gap-5 border-[1px] rounded-[6px] border-[#CDD1DA] pr-[24px]">
+      <div className="group/product-carousel flex flex-row gap-5 border-[1px] rounded-[6px] border-[#CDD1DA] xxs:pr-[24px] xxs:pl-[24px] lg:pr-[24px] lg:pl-[0px]">
         {/* custom */}
-        <div className='carousel-side-banner w-auto h-auto'>
+        <div className='carousel-side-banner w-auto h-auto xxs:hidden lg:block'>
           {/* <img className='h-[472px] !h-auto w-auto object-cover rounded-[8px]' src='https://cdn11.bigcommerce.com/s-t0676dlrio/images/stencil/original/image-manager/mini-banner-trending-items-300-x-512-2x.png?t=1773280667' alt='mini banner trending'/> */}
         </div>
         <ProductCarousel

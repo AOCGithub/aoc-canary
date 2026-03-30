@@ -153,7 +153,7 @@ export function Slideshow({ slides, playOnInit = true, interval = 5000, classNam
   return (
     <section
       className={clsx(
-        'relative h-[384px] my-[20px] bg-[var(--slideshow-background,color-mix(in_oklab,hsl(var(--primary)),black_75%))] @container max-w-screen-2xl mx-auto', //h-[80vh]
+        'relative xxs:h-[200px] lg:h-[384px] my-[20px] w-[90%] bg-[var(--slideshow-background,color-mix(in_oklab,hsl(var(--primary)),black_75%))] @container max-w-screen-2xl mx-auto', //h-[80vh]
         className,
       )}
     >
@@ -195,7 +195,7 @@ export function Slideshow({ slides, playOnInit = true, interval = 5000, classNam
                           <Image
                             alt={image.alt}
                             blurDataURL={image.blurDataUrl}
-                            className="block h-20 w-full object-contain"
+                            className="block w-full xxs:object-cover xxs:relative xxs:h-[200px] lg:h-20"
                             fill
                             placeholder={
                               image.blurDataUrl != null && image.blurDataUrl !== '' ? 'blur' : 'empty'

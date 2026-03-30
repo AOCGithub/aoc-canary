@@ -98,7 +98,7 @@ export function ProductCarousel({
             <CarouselContent className="-ml-4 mb-10 @2xl:-ml-5">
               {products.map(({ id, ...product }) => (
                 <CarouselItem
-                  className="basis-full pl-4 @md:basis-1/2 @lg:basis-1/4 @2xl:basis-1/5 @2xl:pl-5"
+                  className="basis-full pl-4 @md:basis-1/2 @lg:basis-1/3 @2xl:basis-1/5 @2xl:pl-5"
                   key={id}
                 >
                   <ProductCard

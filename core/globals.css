@@ -50,6 +50,14 @@
   font-size: 30px!important;
 }
 
+@media (max-width: 768px){
+  .email-news-text-title{
+    font-family: "Rubik", sans-serif;
+    font-size: 4.5vw!important;
+    text-align: center;
+  }
+}
+
 .footer-menus{
   font-family: "Rubik", sans-serif;
 }

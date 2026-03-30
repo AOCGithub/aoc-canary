@@ -37,12 +37,12 @@ export function Subscribe({
         <div className="w-full flex-1">
           <div
             className={clsx(
-              'flex w-full flex-col gap-10 px-4 pt-[1.25rem] pb-[1.55rem] @xl:px-6 @xl:py-7 @4xl:gap-16 @4xl:px-8 @4xl:py-7',
+              'flex w-full flex-col xxs:gap-4 px-4 pt-[1.25rem] pb-[1.55rem] @xl:px-6 @xl:py-7 @4xl:gap-16 @4xl:px-8 @4xl:py-7',
               image != null ? '@4xl:max-w-4xl' : 'mx-auto max-w-screen-2xl @4xl:flex-row',
             )}
           >
-            <div className="flex-1 flex items-center">
-              <h2 className="email-news-text-title mb-0 text-[24px] font-medium leading-none text-primary-highlight @xl:text-3xl @4xl:text-4xl">
+            <div className="flex-1 flex items-center xxs:justify-center text-center-md:justify-start">
+              <h2 className="email-news-text-title mb-0 font-medium leading-none text-primary-highlight @xl:text-3xl @4xl:text-4xl">
                 {title}
               </h2>
               <p className="text-primary-highlight opacity-75 !hidden">{description}</p>
