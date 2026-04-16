@@ -44,8 +44,8 @@ export function PriceLabel({ className, colorScheme = 'light', price }: Props) {
         className={clsx(
           'block font-semibold',
           {
-            light: 'text-[var(--price-light-text,hsl(var(--foreground)))]',
-            dark: 'text-[var(--price-dark-text,hsl(var(--background)))]',
+            light: '',
+            dark: '',
           }[colorScheme],
           className,
         )}
@@ -62,8 +62,8 @@ export function PriceLabel({ className, colorScheme = 'light', price }: Props) {
           className={clsx(
             'block font-semibold',
             {
-              light: 'text-[var(--price-light-text,hsl(var(--foreground)))]',
-              dark: 'text-[var(--price-dark-text,hsl(var(--background)))]',
+              light: '',
+              dark: '',
             }[colorScheme],
             className,
           )}
@@ -86,8 +86,8 @@ export function PriceLabel({ className, colorScheme = 'light', price }: Props) {
             className={clsx(
               'font-normal line-through opacity-50',
               {
-                light: 'text-[var(--price-light-text,hsl(var(--foreground)))]',
-                dark: 'text-[var(--price-dark-text,hsl(var(--background)))]',
+                light: '',
+                dark: '',
               }[colorScheme],
             )}
           >

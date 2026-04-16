@@ -62,4 +62,20 @@
   font-family: "Rubik", sans-serif;
 }
 
+.info-banner{
+  background-color:#aa1f23;
+  color:#ffffff;
+  padding: 5px 10px;
+  font-family: 'Rubik', sans-serif;
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 20px;
+}
 
+.after\:bg-\[var\(--button-primary-background-hover\2c color-mix\(in_oklab\2c hsl\(var\(--primary\)\)\2c white_75\%\)\)\]::after {
+  display: none!important;
+}
+
+.bg-\[var\(--number-input-light-background\2c hsl\(var\(--background\)\)\)\] {
+  border-radius: 3px!important;
+}

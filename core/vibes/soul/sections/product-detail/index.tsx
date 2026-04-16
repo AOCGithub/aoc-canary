@@ -17,6 +17,7 @@ import {
 } from './product-detail-form';
 import { RatingLink } from './rating-link';
 import { Field } from './schema';
+import { productCardTransformer } from '~/data-transformers/product-card-transformer';
 
 interface ProductDetailProduct {
   id: string;
@@ -110,6 +111,7 @@ export function ProductDetail<F extends Field>({
   reviewFormAction,
   user,
 }: ProductDetailProps<F>) {
+
   return (
     <section className="@container">
       <div className="group/product-detail mx-auto w-full max-w-screen-2xl px-4 py-10 @xl:px-6 @xl:py-14 @4xl:px-8 @4xl:py-20">
@@ -130,11 +132,11 @@ export function ProductDetail<F extends Field>({
                 {/* Product Details */}
                 <div className="text-[var(--product-detail-primary-text,hsl(var(--foreground)))]">
                   {Boolean(product.subtitle) && (
-                    <p className="font-[family-name:var(--product-detail-subtitle-font-family,var(--font-family-mono))] text-sm uppercase">
+                    <p className="font-semibold text-[#0d1e47] font-[Rubik] text-sm uppercase">
                       {product.subtitle}
                     </p>
                   )}
-                  <h1 className="mb-3 mt-2 font-[family-name:var(--product-detail-title-font-family,var(--font-family-heading))] text-2xl font-medium leading-none @xl:mb-4 @xl:text-3xl @4xl:text-4xl">
+                  <h1 className="mb-[1rem] mt-2 !text-2xl font-semibold text-[#0d1e47] font-[Rubik] leading-none @xl:mb-[1.5rem] @xl:text-3xl @4xl:text-4xl">
                     {product.title}
                   </h1>
                   {product.reviewsEnabled && (
@@ -179,10 +181,15 @@ export function ProductDetail<F extends Field>({
                   <div className="group/product-price">
                     <Stream fallback={<PriceLabelSkeleton />} value={product.price}>
                       {(price) => (
-                        <PriceLabel className="my-3 text-xl @xl:text-2xl" price={price ?? ''} />
+                        <PriceLabel className="!text-[#0d1e47] my-3 text-2xl @xl:text-2xl" price={price ?? ''} />
                       )}
                     </Stream>
+                    {/* availability */}
+                    <div>
+
+                    </div>
                   </div>
+
                   <div className="group/product-gallery mb-8 @2xl:hidden">
                     <Stream fallback={<ProductGallerySkeleton />} value={product.images}>
                       {(images) => (
@@ -223,59 +230,63 @@ export function ProductDetail<F extends Field>({
                         stockDisplayData,
                         backorderDisplayData,
                       ]) => (
-                        <ProductDetailForm
-                          action={action}
-                          additionalActions={additionalActions}
-                          backorderDisplayData={backorderDisplayData ?? undefined}
-                          ctaDisabled={ctaDisabled ?? undefined}
-                          ctaLabel={ctaLabel ?? undefined}
-                          decrementLabel={decrementLabel}
-                          emptySelectPlaceholder={emptySelectPlaceholder}
-                          fields={fields}
-                          incrementLabel={incrementLabel}
-                          maxQuantity={maxQuantity ?? undefined}
-                          minQuantity={minQuantity ?? undefined}
-                          prefetch={prefetch}
-                          productId={product.id}
-                          quantityLabel={quantityLabel}
-                          stockDisplayData={stockDisplayData ?? undefined}
-                        />
+                        <div>
+                          <ProductDetailForm
+                            action={action}
+                            additionalActions={additionalActions}
+                            backorderDisplayData={backorderDisplayData ?? undefined}
+                            ctaDisabled={ctaDisabled ?? undefined}
+                            ctaLabel={ctaLabel ?? undefined}
+                            decrementLabel={decrementLabel}
+                            emptySelectPlaceholder={emptySelectPlaceholder}
+                            fields={fields}
+                            incrementLabel={incrementLabel}
+                            maxQuantity={maxQuantity ?? undefined}
+                            minQuantity={minQuantity ?? undefined}
+                            prefetch={prefetch}
+                            productId={product.id}
+                            quantityLabel={quantityLabel}
+                            stockDisplayData={stockDisplayData ?? undefined}
+                          />
+                        </div>
                       )}
                     </Stream>
                   </div>
-                  <div className="group/product-description">
-                    <Stream fallback={<ProductDescriptionSkeleton />} value={product.description}>
-                      {(description) =>
-                        Boolean(description) && (
-                          <div className="prose prose-sm max-w-none border-t border-[var(--product-detail-border,hsl(var(--contrast-100)))] py-8 [&>div>*:first-child]:mt-0 [&>div>*:last-child]:mb-0">
-                            {description}
-                          </div>
-                        )
-                      }
-                    </Stream>
-                  </div>
-                  <h2 className="sr-only">{additionalInformationTitle}</h2>
-                  <div className="group/product-accordion">
-                    <Stream fallback={<ProductAccordionsSkeleton />} value={product.accordions}>
-                      {(accordions) =>
-                        accordions && (
-                          <Accordion
-                            className="border-t border-[var(--product-detail-border,hsl(var(--contrast-100)))] pt-4"
-                            type="multiple"
-                          >
-                            {accordions.map((accordion, index) => (
-                              <AccordionItem
-                                key={index}
-                                title={accordion.title}
-                                value={index.toString()}
-                              >
-                                {accordion.content}
-                              </AccordionItem>
-                            ))}
-                          </Accordion>
-                        )
-                      }
-                    </Stream>
+                  <div className=''>
+                    <div className="group/product-description">
+                      <Stream fallback={<ProductDescriptionSkeleton />} value={product.description}>
+                        {(description) =>
+                          Boolean(description) && (
+                            <div className="prose prose-sm max-w-none border-t border-[var(--product-detail-border,hsl(var(--contrast-100)))] py-8 [&>div>*:first-child]:mt-0 [&>div>*:last-child]:mb-0">
+                              {description}
+                            </div>
+                          )
+                        }
+                      </Stream>
+                    </div>
+                    <h2 className="sr-only">{additionalInformationTitle}</h2>
+                    <div className="group/product-accordion">
+                      <Stream fallback={<ProductAccordionsSkeleton />} value={product.accordions}>
+                        {(accordions) =>
+                          accordions && (
+                            <Accordion
+                              className="border-t border-[var(--product-detail-border,hsl(var(--contrast-100)))] pt-4"
+                              type="multiple"
+                            >
+                              {accordions.map((accordion, index) => (
+                                <AccordionItem
+                                  key={index}
+                                  title={accordion.title}
+                                  value={index.toString()}
+                                >
+                                  {accordion.content}
+                                </AccordionItem>
+                              ))}
+                            </Accordion>
+                          )
+                        }
+                      </Stream>
+                    </div>
                   </div>
                 </div>
               </div>

@@ -71,7 +71,7 @@ export const Input = React.forwardRef<
         <input
           {...rest}
           className={clsx(
-            'w-full px-6 py-3 text-sm [appearance:textfield] placeholder:font-normal focus:outline-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none',
+            'w-full text-sm [appearance:textfield] placeholder:font-normal focus:outline-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none border-[#224086] text-[#224086] font-[Rubik] rounded-[3px] px-6 py-[6px]',
             {
               light:
                 'bg-[var(--input-light-background,hsl(var(--background)))] text-[var(--input-light-text,hsl(var(--foreground)))] placeholder:text-[var(--input-light-placeholder,hsl(var(--contrast-500)))]',

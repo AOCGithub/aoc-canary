@@ -33,11 +33,11 @@ export function Label({
     <LabelPrimitive.Root
       {...rest}
       className={clsx(
-        'block font-mono text-xs uppercase',
-        {
-          light: 'text-[var(--label-light-text,hsl(var(--contrast-500)))]',
-          dark: 'text-[var(--label-dark-text,hsl(var(--contrast-100)))]',
-        }[colorScheme],
+        'block text-xs uppercase text-[#0d1e47] font-[Rubik] font-[600]',
+        // {
+        //   // light: 'text-[var(--label-light-text,hsl(var(--contrast-500)))]',
+        //   dark: 'text-[var(--label-dark-text,hsl(var(--contrast-100)))]',
+        // }[colorScheme],
         className,
       )}
     >

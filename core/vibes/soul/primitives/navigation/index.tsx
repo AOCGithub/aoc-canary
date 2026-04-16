@@ -460,7 +460,7 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
             logo={streamableLogo}
             width={logoWidth}
           /> */}
-          <img src='https://usrigging.com/cdn/shop/files/USRigging-Logo-01.svg?v=1740965176&width=250'/>
+          <img className='max-w-[262px]' src='https://usrigging.com/cdn/shop/files/USRigging-Logo-01.svg?v=1740965176&width=250'/>
           {streamableMobileLogo != null && (
             // <Logo
             //   className="flex @4xl:hidden"
@@ -486,7 +486,7 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
         </div>
 
         {/* custom search input */}
-        <div className="@4xl:flex items-center gap-2 rounded-[150px] bg-[#E5E7EE] w-[42%] border-[1px] border-[#224086] overflow-hidden min-w-[44%] xxs:hidden remove-head-content:flex">
+        <div className="@4xl:flex items-center gap-2 rounded-[150px] bg-[#E5E7EE] w-[42%] border-[1px] border-[#224086] overflow-hidden xxs:hidden remove-head-content:flex">
           <form
             action={searchHref}
             className="flex flex-1 items-center gap-2 pl-[24px] h-[48px]"

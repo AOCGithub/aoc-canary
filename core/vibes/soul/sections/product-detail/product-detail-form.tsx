@@ -229,11 +229,40 @@ export function ProductDetailForm<F extends Field>({
 
   const quantityControl = useInputControl(formFields.quantity);
 
+  console.log("----- PRODUCT AVAILABILITY DEBUG -----");
+
+  console.log("Stock Display Text:", stockDisplayData);
+
+  console.log("Backorder Raw Data:", backorderDisplayData);
+
+  console.log("Available On Hand:", backorderDisplayData?.availableOnHand);
+  console.log("Available For Backorder:", backorderDisplayData?.availableForBackorder);
+  console.log("Unlimited Backorder:", backorderDisplayData?.unlimitedBackorder);
+
+  console.log("Min Quantity Allowed:", minQuantity);
+  console.log("Max Quantity Allowed:", maxQuantity);
+
+  console.log("User Selected Quantity:", formFields.quantity.value);
+
+  if (backorderDisplayData) {
+    const selectedQty = Number(formFields.quantity.value);
+    const stock = backorderDisplayData.availableOnHand;
+
+    console.log(
+      selectedQty > stock
+        ? "⚠️ Customer is ordering MORE than stock → BACKORDER WILL TRIGGER"
+        : "✅ Order is within stock"
+    );
+  }
+
   return (
     <FormProvider context={form.context}>
       <FormStateInput />
       <form {...getFormProps(form)} action={formAction}>
         <input name="id" type="hidden" value={productId} />
+        <div className="info-banner">
+            <p>Each order is carefully prepared. Please allow 2–3 business days for processing prior to shipment.</p>
+        </div>
         <div className="space-y-6 pb-8">
           {fields.map((field) => {
             return (
