@@ -184,10 +184,6 @@ export function ProductDetail<F extends Field>({
                         <PriceLabel className="!text-[#0d1e47] my-3 text-2xl @xl:text-2xl" price={price ?? ''} />
                       )}
                     </Stream>
-                    {/* availability */}
-                    <div>
-
-                    </div>
                   </div>
 
                   <div className="group/product-gallery mb-8 @2xl:hidden">
