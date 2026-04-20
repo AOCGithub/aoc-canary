@@ -80,7 +80,7 @@ export const ButtonRadioGroup = React.forwardRef<
             <RadioGroupPrimitive.Item
               aria-label={option.label}
               className={clsx(
-                'h-12 whitespace-nowrap rounded-full border px-4 font-body text-sm font-normal leading-normal transition-colors focus-visible:outline-0 focus-visible:ring-2 data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+                'whitespace-nowrap font-body font-normal transition-colors focus-visible:outline-0 focus-visible:ring-2 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 !bg-transparent !text-[#224086] border !border-[#224086] rounded-[3px] min-h-[35px] min-w-[35px] px-[8px] py-[2px] text-[14px] leading-[16px] h-[35px] text-center flex items-center justify-center',
                 {
                   light:
                     'border-[var(--button-radio-group-light-unchecked-border,hsl(var(--contrast-100)))] focus-visible:ring-[var(--button-radio-group-light-focus,hsl(var(--primary)))] data-[state=checked]:bg-[var(--button-radio-group-light-checked-background,hsl(var(--foreground)))] data-[state=unchecked]:bg-[var(--button-radio-group-light-unchecked-background,hsl(var(--background)))] data-[state=checked]:text-[var(--button-radio-group-light-checked-text,hsl(var(--background)))] data-[state=unchecked]:text-[var(--button-radio-group-light-unchecked-text,hsl(var(--foreground)))] data-[state=unchecked]:hover:border-[var(--button-radio-group-light-unchecked-border-hover,hsl(var(--contrast-200)))] data-[state=unchecked]:hover:bg-[var(--button-radio-group-light-unchecked-background-hover,hsl(var(--contrast-100)))]',
