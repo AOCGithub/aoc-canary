@@ -4,6 +4,8 @@ import { CarouselProduct, ProductCarousel } from '@/vibes/soul/sections/product-
 import { SectionLayout } from '@/vibes/soul/sections/section-layout';
 import { Link } from '~/components/link';
 
+// custom
+import _Custom from './_custom';
 interface Link {
   label: string;
   href: string;
@@ -37,6 +39,7 @@ export interface FeaturedProductCarouselProps {
  * }
  * ```
  */
+
 export function FeaturedProductCarousel({
   title,
   description,
@@ -50,6 +53,7 @@ export function FeaturedProductCarousel({
   nextLabel,
   hideOverflow = false,
 }: FeaturedProductCarouselProps) {
+
   return (
     <SectionLayout containerSize="2xl">
       <div className="mb-6 flex w-full flex-row flex-wrap items-end justify-between gap-x-8 gap-y-6 @4xl:mb-8">
@@ -69,11 +73,9 @@ export function FeaturedProductCarousel({
           </Link>
         )} */}
       </div>
-      <div className="group/product-carousel flex flex-row gap-5 border-[1px] rounded-[6px] border-[#CDD1DA] xxs:pr-[24px] xxs:pl-[24px] lg:pr-[24px] lg:pl-[0px]">
+      <div className={`group/product-carousel product-carousel flex flex-row gap-5 border-[1px] rounded-[6px] border-[#CDD1DA] xxs:pr-[24px] xxs:pl-[24px] lg:pr-[24px] lg:pl-[0px]`}>
         {/* custom */}
-        <div className='carousel-side-banner w-auto h-auto xxs:hidden lg:block'>
-          {/* <img className='h-[472px] !h-auto w-auto object-cover rounded-[8px]' src='https://cdn11.bigcommerce.com/s-t0676dlrio/images/stencil/original/image-manager/mini-banner-trending-items-300-x-512-2x.png?t=1773280667' alt='mini banner trending'/> */}
-        </div>
+        <_Custom />
         <ProductCarousel
           emptyStateSubtitle={emptyStateSubtitle}
           emptyStateTitle={emptyStateTitle}
