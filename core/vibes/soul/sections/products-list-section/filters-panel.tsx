@@ -155,12 +155,12 @@ export function FiltersPanelInner({
     <div className={clsx('space-y-5', className)} data-pending={isPending ? true : null}>
       {linkGroupFilters.map((linkGroup, index) => (
         <div key={index.toString()}>
-          <h3 className="py-4 font-mono text-sm uppercase text-contrast-400">{linkGroup.label}</h3>
+          <h3 className="py-4 font-mono text-sm uppercase text-contrast-400 text-[#aa1f23] font-[800]">{linkGroup.label}</h3>
           <ul>
             {linkGroup.links.map((link, linkIndex) => (
               <li className="py-2" key={linkIndex.toString()}>
                 <Link
-                  className="font-body text-base font-medium text-contrast-500 transition-colors duration-300 ease-out hover:text-foreground"
+                  className="font-body text-base font-medium text-contrast-500 transition-colors duration-300 ease-out hover:text-foreground !text-[#224086]"
                   href={link.href}
                 >
                   {link.label}

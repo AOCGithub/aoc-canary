@@ -95,7 +95,7 @@ export function Reviews({
                 <Stream
                   fallback={
                     <div className="animate-pulse">
-                      <h2 className="mb-4 mt-0 text-xl font-medium @xl:my-5 @xl:text-2xl">
+                      <h2 className="mb-4 mt-0 text-xl font-medium @xl:my-5 @xl:text-2xl uppercase !text-[#0d1e47]">
                         {reviewsLabel}
                       </h2>
                     </div>
@@ -103,7 +103,7 @@ export function Reviews({
                   value={streamableTotalCount}
                 >
                   {(totalCount) => (
-                    <h2 className="mb-4 mt-0 text-xl font-medium @xl:my-5 @xl:text-2xl">
+                    <h2 className="mb-4 mt-0 text-xl font-medium @xl:my-5 @xl:text-2xl uppercase !text-[#0d1e47]">
                       {reviewsLabel} <span className="text-contrast-300">{totalCount}</span>
                     </h2>
                   )}

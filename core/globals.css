@@ -99,3 +99,26 @@
 .hover\:after\:translate-x-0:hover::after{
   display: none!important;
 }
+
+.\[background\:linear-gradient\(0deg\2c var\(--animated-underline-hover\2c hsl\(var\(--primary\)\)\)\2c var\(--animated-underline-hover\2c hsl\(var\(--primary\)\)\)\)_no-repeat_left_bottom_\/_0_2px\]{
+  background: none!important;
+}
+
+.prose > div > h3 {
+  color: #0d1e47 !important;
+}
+
+.category-page-heading{
+  font-family: "Rubik", sans-serif;
+}
+
+.category-page-heading > span{
+  font-family: "Rubik", sans-serif;
+  color: #0d1e47 !important;
+}
+
+.min-max-btn > svg{
+  stroke: #ffffff;
+  fill: #ffffff;
+  color: #ffffff;
+}

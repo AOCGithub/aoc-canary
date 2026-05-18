@@ -86,7 +86,7 @@ export function Button({
     >
       <span
         className={clsx(
-          'inline-flex items-center justify-center transition-all duration-300 ease-in-out',
+          'min-max-btn inline-flex items-center justify-center transition-all duration-300 ease-in-out',
           loading ? '-translate-y-10 opacity-0' : 'translate-y-0 opacity-100',
           {
             'x-small': 'min-h-8 text-xs',

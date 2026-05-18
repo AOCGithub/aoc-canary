@@ -448,7 +448,7 @@ export default async function Product({ params, searchParams }: Props) {
                     {specifications.map((field, index) => (
                       <div className="grid grid-cols-1 gap-2 @lg:grid-cols-2" key={index}>
                         <dt>
-                          <strong>{field.name}</strong>
+                          <strong className="text-[#0d1e47]">{field.name}</strong>
                         </dt>
                         <dd>{field.value}</dd>
                       </div>
