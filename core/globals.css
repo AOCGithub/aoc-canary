@@ -79,3 +79,23 @@
 .bg-\[var\(--number-input-light-background\2c hsl\(var\(--background\)\)\)\] {
   border-radius: 3px!important;
 }
+
+.pdp-btn-group > div:nth-of-type(2) {
+  display: none!important;
+}
+
+.pdp-btn-group > button {
+  width: 100%!important;
+}
+
+.prose > div > p {
+  font-family: "Rubik", sans-serif;
+}
+
+.prose > div > h3 {
+  font-family: "Rubik", sans-serif;
+}
+
+.hover\:after\:translate-x-0:hover::after{
+  display: none!important;
+}

@@ -176,7 +176,6 @@ export function ProductsListSection({
               showCompare={showCompare}
               showRating={showRating}
             />
-
             {paginationInfo && <CursorPagination info={paginationInfo} />}
           </div>
         </div>

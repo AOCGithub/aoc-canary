@@ -328,10 +328,10 @@ export function ProductDetailForm<F extends Field>({
             )}
           </div>
 
-          <div className="flex gap-x-3">
+          <div className="flex gap-x-3 pdp-btn-group">
             <NumberInput
               aria-label={quantityLabel}
-              decrementLabel={decrementLabel}
+              decrementLabel={decrementLabel} 
               incrementLabel={incrementLabel}
               max={maxQuantity}
               min={minQuantity ?? 1}

@@ -80,7 +80,7 @@ export function FeaturedProductCarousel({
           emptyStateSubtitle={emptyStateSubtitle}
           emptyStateTitle={emptyStateTitle}
           hideOverflow={hideOverflow}
-          nextLabel={nextLabel}
+          nextLabel={nextLabel} 
           placeholderCount={placeholderCount}
           previousLabel={previousLabel}
           products={products}
