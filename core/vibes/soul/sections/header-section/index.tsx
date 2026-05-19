@@ -65,6 +65,9 @@ export const HeaderSection = forwardRef<React.ComponentRef<'div'>, Props>(
         >
           <div className="">
             <div className='bg-[#E5E7EE] h-auto w-full mx-auto xxs:hidden lg:block'> 
+              <div className='demo-banner'>
+                <span>This store is just for demo and testing purposes.</span>
+              </div>
               <div className='flex justify-between items-center h-[45px] w-[90%] max-w-screen-2xl mx-auto'> 
                 <p className='font-[family-name:var(--nav-link-font-family,var(--font-family-body))] text-[14px]'>FREE SHIPPING ON ALL ORDERS - OFFER ENDS DEC 31.</p>
                 <div>

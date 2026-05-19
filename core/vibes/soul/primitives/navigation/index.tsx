@@ -448,7 +448,7 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
         {/* Logo */}
         <div
           className={clsx(
-            'flex items-center justify-start self-stretch min-w-[20%]',
+            'flex items-center justify-start self-stretch xxs:min-w-[34%] xl:min-w-[25%]',
             // linksPosition === 'center' ? 'flex-1' : 'flex-1 @4xl:flex-none',
           )}
         >

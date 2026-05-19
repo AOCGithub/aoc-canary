@@ -356,13 +356,13 @@ export function CartClient<LineItem extends CartLineItem>({
       className="font-[family-name:var(--cart-font-family,var(--font-family-body))] text-[var(--cart-text,hsl(var(--foreground)))]"
       sidebar={
         <div>
-          <h2 className="mb-10 font-[family-name:var(--cart-title-font-family,var(--font-family-heading))] text-4xl font-medium leading-none @xl:text-5xl">
+          <h2 className="summary-title-text mb-10 font-[family-name:var(--cart-title-font-family,var(--font-family-heading))] text-4xl font-medium leading-none @xl:text-5xl">
             {summaryTitle}
           </h2>
           <dl aria-label="Receipt Summary" className="w-full">
             <div className="divide-y divide-[var(--cart-border,hsl(var(--contrast-100)))]">
               {cart.summaryItems.map((summaryItem, index) => (
-                <div className="flex justify-between py-4" key={index}>
+                <div className="summary-item flex justify-between py-4" key={index}>
                   <dt>{summaryItem.label}</dt>
                   {isLineItemActionPending ? (
                     <Skeleton.Text characterCount={8} className="animate-pulse rounded-md" />
@@ -396,7 +396,7 @@ export function CartClient<LineItem extends CartLineItem>({
                 removeLabel={giftCertificate.removeLabel}
               />
             )}
-            <div className="flex justify-between border-t border-[var(--cart-border,hsl(var(--contrast-100)))] py-6 text-xl font-bold">
+            <div className="summary-total flex justify-between border-t border-[var(--cart-border,hsl(var(--contrast-100)))] py-6 text-xl font-bold">
               <dt>{cart.totalLabel ?? 'Total'}</dt>
               {isLineItemActionPending ? (
                 <Skeleton.Text characterCount={8} className="animate-pulse rounded-md" />
@@ -419,7 +419,7 @@ export function CartClient<LineItem extends CartLineItem>({
       sidebarSize="1/3"
     >
       <div className="w-full">
-        <h1 className="mb-10 font-[family-name:var(--cart-title-font-family,var(--font-family-heading))] text-4xl font-medium leading-none @xl:text-5xl">
+        <h1 className="cart-text-title mb-10 font-[family-name:var(--cart-title-font-family,var(--font-family-heading))] text-4xl font-medium leading-none @xl:text-5xl">
           {title}
           <span className="ml-4 text-[var(--cart-subtext-text,hsl(var(--contrast-300)))] contrast-more:text-[var(--cart-subtitle-text,hsl(var(--contrast-500)))]">
             {optimisticQuantity}
@@ -451,8 +451,8 @@ export function CartClient<LineItem extends CartLineItem>({
               </div>
               <div className="flex grow flex-col flex-wrap justify-between gap-y-2 @xl:flex-row">
                 <div className="flex w-full flex-1 flex-col @xl:w-1/2 @xl:pr-4">
-                  <span className="font-medium">{lineItem.title}</span>
-                  <span className="text-[var(--cart-subtext-text,hsl(var(--contrast-400)))] contrast-more:text-[var(--cart-subtitle-text,hsl(var(--contrast-500)))]">
+                  <span className="font-[600] !text-[#0D1E47]">{lineItem.title}</span>
+                  <span className="text-[var(--cart-subtext-text,hsl(var(--contrast-400)))] contrast-more:text-[var(--cart-subtitle-text,hsl(var(--contrast-500)))] !text-[#0D1E47]">
                     {lineItem.subtitle}
                   </span>
                 </div>
@@ -548,7 +548,7 @@ function CounterForm({
             value="delete"
           >
             <Trash2
-              className="text-[var(--cart-icon,hsl(var(--contrast-300)))] group-hover:text-[var(--cart-icon-hover,hsl(var(--foreground)))]"
+              className="text-[#0d1e47]"
               size={20}
               strokeWidth={1}
             />
@@ -626,7 +626,7 @@ function CounterForm({
           value="delete"
         >
           <Trash2
-            className="text-[var(--cart-icon,hsl(var(--contrast-300)))] group-hover:text-[var(--cart-icon-hover,hsl(var(--foreground)))]"
+            className="text-[#0d1e47]"
             size={20}
             strokeWidth={1}
           />

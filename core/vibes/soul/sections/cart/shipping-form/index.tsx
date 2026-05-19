@@ -232,7 +232,7 @@ export function ShippingForm({
   return (
     <div className="py-4">
       <div>
-        <div className="flex justify-between">
+        <div className="summary-item-checkout flex justify-between">
           <span>{shippingLabel}</span>
           {state.shippingOption ? (
             <span>{state.shippingOption.price}</span>
