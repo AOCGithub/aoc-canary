@@ -201,7 +201,7 @@ export function ProductsCarouselEmptyState({
         <div className="mx-auto max-w-xl space-y-2 text-center @4xl:space-y-3">
           <h3
             className={clsx(
-              'font-[family-name:var(--product-carousel-empty-title-font-family,var(--font-family-heading))] text-2xl leading-tight @4xl:text-4xl @4xl:leading-none',
+              'empty-state-product-list-title font-[family-name:var(--product-carousel-empty-title-font-family,var(--font-family-heading))] text-2xl leading-tight @4xl:text-4xl @4xl:leading-none',
               {
                 light: 'text-[var(--product-carousel-light-empty-title,hsl(var(--foreground)))]',
                 dark: 'text-[var(--product-carousel-dark-empty-title,hsl(var(--background)))]',
@@ -212,7 +212,7 @@ export function ProductsCarouselEmptyState({
           </h3>
           <p
             className={clsx(
-              'font-[family-name:var(--product-carousel-empty-subtitle-font-family,var(--font-family-body))] text-sm @4xl:text-lg',
+              'empty-state-product-list-subtitle font-[family-name:var(--product-carousel-empty-subtitle-font-family,var(--font-family-body))] text-sm @4xl:text-lg',
               {
                 light:
                   'text-[var(--product-carousel-light-empty-subtitle,hsl(var(--contrast-500)))]',

@@ -166,3 +166,13 @@
 .summary-total {
   color: #0d1e47;
 }
+
+.empty-state-product-list-title {
+  font-family: "Rubik", sans-serif;
+  color: #0d1e47;
+}
+
+.empty-state-product-list-subtitle{
+  font-family: "Rubik", sans-serif;
+  color: #0d1e47;
+}
