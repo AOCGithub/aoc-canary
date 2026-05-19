@@ -168,14 +168,14 @@ export function ProductListEmptyState({
           <ProductCardSkeleton key={index} />
         ))}
       </div>
-      <div className="absolute inset-0 mx-auto px-3 py-16 pb-3 @4xl:px-10 @4xl:pb-10 @4xl:pt-28">
+      <div className="inset-0 mx-auto px-3 py-16 pb-3 @4xl:px-10 @4xl:pb-10 @4xl:pt-28">
         <div className="mx-auto max-w-xl space-y-2 text-center @4xl:space-y-3">
-          <h3 className="font-[family-name:var(--product-list-empty-state-title-font-family,var(--font-family-heading))] text-2xl leading-tight text-[var(--product-list-empty-state-title,hsl(var(--foreground)))] @4xl:text-4xl @4xl:leading-none">
+          {/* <h3 className="font-[family-name:var(--product-list-empty-state-title-font-family,var(--font-family-heading))] text-2xl leading-tight text-[var(--product-list-empty-state-title,hsl(var(--foreground)))] @4xl:text-4xl @4xl:leading-none">
             {emptyStateTitle}
-          </h3>
-          <p className="font-[family-name:var(--product-list-empty-state-subtitle-font-family,var(--font-family-body))] text-sm text-[var(--product-list-empty-state-subtitle,hsl(var(--contrast-500)))] @4xl:text-lg">
+          </h3> */}
+          {/* <p className="font-[family-name:var(--product-list-empty-state-subtitle-font-family,var(--font-family-body))] text-sm text-[var(--product-list-empty-state-subtitle,hsl(var(--contrast-500)))] @4xl:text-lg">
             {emptyStateSubtitle}
-          </p>
+          </p> */}
         </div>
       </div>
     </Skeleton.Root>

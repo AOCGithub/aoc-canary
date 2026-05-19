@@ -184,7 +184,7 @@ export function ProductsCarouselEmptyState({
   | 'colorScheme'
 >) {
   return (
-    <Skeleton.Root className={clsx('relative', className)} hideOverflow={hideOverflow}>
+    <Skeleton.Root className={clsx('relative w-full py-[2rem]', className)} hideOverflow={hideOverflow}>
       <div className="w-full">
         <div className="-ml-4 flex [mask-image:linear-gradient(to_bottom,_black_0%,_transparent_90%)] @2xl:-ml-5">
           {Array.from({ length: placeholderCount }).map((_, index) => (
@@ -197,7 +197,7 @@ export function ProductsCarouselEmptyState({
           ))}
         </div>
       </div>
-      <div className="absolute inset-0 mx-auto px-3 py-16 pb-3 @4xl:px-10 @4xl:pb-10 @4xl:pt-28">
+      <div className="inset-0 mx-auto px-3 py-16 pb-3 @4xl:px-10 @4xl:pb-10 @4xl:pt-28">
         <div className="mx-auto max-w-xl space-y-2 text-center @4xl:space-y-3">
           <h3
             className={clsx(

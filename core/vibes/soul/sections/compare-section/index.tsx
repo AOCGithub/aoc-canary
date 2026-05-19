@@ -214,7 +214,7 @@ export function CompareSectionEmptyState({
                 </div>
               ))}
             </div>
-            <div className="absolute inset-0 mx-auto px-3 py-16 pb-3 @4xl:px-10 @4xl:pb-10 @4xl:pt-28">
+            <div className="inset-0 mx-auto px-3 py-16 pb-3 @4xl:px-10 @4xl:pb-10 @4xl:pt-28">
               <header className="mx-auto max-w-xl space-y-2 text-center font-[family-name:var(--compare-section-empty-font-family,var(--font-family-body))] @4xl:space-y-3">
                 <h3 className="font-[family-name:var(--compare-section-empty-title-font-family,var(--font-family-heading))] text-2xl leading-tight text-[var(--compare-section-empty-title,hsl(var(--foreground)))] @4xl:text-4xl @4xl:leading-none">
                   {emptyStateTitle}
