@@ -448,10 +448,10 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
         {/* Logo */}
         <div
           className={clsx(
-            'flex items-center justify-start self-stretch xxs:min-w-[34%] xl:min-w-[25%]',
+            'site-logo-container flex items-center justify-start self-stretch xxs:min-w-[34%] xl:min-w-[25%]',
             // linksPosition === 'center' ? 'flex-1' : 'flex-1 @4xl:flex-none',
           )}
-        >
+        > 
           {/* <Logo
             className={clsx(streamableMobileLogo != null ? 'hidden @4xl:flex' : 'flex')}
             height={logoHeight}
@@ -460,7 +460,9 @@ export const Navigation = forwardRef(function Navigation<S extends SearchResult>
             logo={streamableLogo}
             width={logoWidth}
           /> */}
-          <img className='max-w-[262px]' src='https://usrigging.com/cdn/shop/files/USRigging-Logo-01.svg?v=1740965176&width=250'/>
+          <Link href='/'>
+            <img className='max-w-[262px] xxs:h-[30px] md:h-[40px] xl:h-[50px]' src='https://usrigging.com/cdn/shop/files/USRigging-Logo-01.svg?v=1740965176&width=250'/>
+          </Link>
           {streamableMobileLogo != null && (
             // <Logo
             //   className="flex @4xl:hidden"
